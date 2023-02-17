@@ -36,10 +36,8 @@ public class Game {
         platform1.setPosition(new Vec2(-8, -4f));
 
         //make a character (with an overlaid image)
-        Shape studentShape = new BoxShape(1,2);
-        DynamicBody student = new DynamicBody(world, studentShape);
+        Student student = new Student(world);
         student.setPosition(new Vec2(4,-5));
-        student.addImage(new BodyImage("data/student.png", 4));
 
 
         //3. make a view to look into the game world
