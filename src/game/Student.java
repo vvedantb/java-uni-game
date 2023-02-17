@@ -6,19 +6,19 @@ public class Student extends DynamicBody {
 
     private static final Shape studentShape = new BoxShape(1, 2);
     private static final BodyImage image = new BodyImage("data/student.png", 4);
+    private int credits;
 
-    private int credit;
     public Student(World world) {
         super(world);
         addImage(image);
-        credit = 0;
+        credits = 0;
     }
 
-    public int getCredit() {
-        return credit;
+    public int getCredits() {
+        return credits;
     }
 
-    public void setCredit(int credit) {
-        this.credit = credit;
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 }
