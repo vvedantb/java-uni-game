@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 public class GiveFocus implements MouseListener {
 
-    private GameView view;
+    private final GameView view;
 
     public GiveFocus(GameView v){
         this.view = v;
