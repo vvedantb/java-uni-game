@@ -33,6 +33,15 @@ public class StudentController implements KeyListener  {
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+        int code = e.getKeyCode();
+
+        if (code == KeyEvent.VK_1) {
+            student.stopWalking();
+        } else if (code == KeyEvent.VK_2) {
+            student.stopWalking();
+        }
+
     }
 
 }
