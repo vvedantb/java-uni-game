@@ -15,6 +15,8 @@ public class StudentController implements KeyListener  {
 
     @Override
     public void keyTyped(KeyEvent e) {
+
+
     }
 
     @Override
@@ -28,6 +30,12 @@ public class StudentController implements KeyListener  {
         } else if (code == KeyEvent.VK_2) {
             student.startWalking(5);
         }
+
+//        int code = e.getKeyCode();
+        if (code == KeyEvent.VK_SPACE){
+            student.jump(5);
+        }
+
     }
 
 
@@ -40,6 +48,10 @@ public class StudentController implements KeyListener  {
             student.stopWalking();
         } else if (code == KeyEvent.VK_2) {
             student.stopWalking();
+        }
+
+        if (code == KeyEvent.VK_SPACE){
+            student.jump(0);
         }
 
     }
