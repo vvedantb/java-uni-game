@@ -27,9 +27,11 @@ public class Game {
         view.addKeyListener(controller);
 
 
+        MouseHandler mouseHandler = new MouseHandler(world, view);
+        view.addMouseListener(mouseHandler);
+
         GiveFocus focus = new GiveFocus(view);
         view.addMouseListener(focus);
-
 
         final JFrame frame = new JFrame("City Game"); //4. create a Java window (frame) and add the game
         frame.add(view); //   view to it
