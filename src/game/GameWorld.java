@@ -6,6 +6,7 @@ import org.jbox2d.common.Vec2;
 public class GameWorld extends World {
 
     public Student student;
+    public Professor professor;
 
     public GameWorld() {
 
@@ -21,7 +22,12 @@ public class GameWorld extends World {
 
         //Make a character (with an overlaid image)
         student = new Student(this);
-        student.setPosition(new Vec2(4, -5));
+//        student.setPosition(new Vec2(4, -5));
+
+        professor = new Professor(this);
+
+        GenericCollisionListener gcl = new GenericCollisionListener();
+        student.addCollisionListener(gcl);
     }
 
     public Student getStudent(){
