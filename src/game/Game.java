@@ -1,16 +1,6 @@
 package game;
 
-import city.cs.engine.*;
-import city.cs.engine.Shape;
-import org.jbox2d.common.Vec2;
-import org.w3c.dom.ls.LSOutput;
-
 import javax.swing.JFrame;
-
-import java.awt.*;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 //Your main game entry point
 public class Game {
@@ -19,10 +9,10 @@ public class Game {
     public Game() {
 
         GameWorld world = new GameWorld(); //1. make an empty game world
-        GameView view = new GameView(world, 800, 800); //3. make a view to look into the game world
+        GameView view = new GameView(world, 700, 700); //3. make a view to look into the game world
 //        view.setGridResolution(1); //optional: draw a 1-metre grid over the view
 
-        StudentController controller = new StudentController(world.getStudent());
+        MainCharacterController controller = new MainCharacterController(world.getMainCharacter());
         view.addKeyListener(controller);
 
         MouseHandler mouseHandler = new MouseHandler(world, view);

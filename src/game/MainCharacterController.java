@@ -1,17 +1,15 @@
 package game;
 
-import city.cs.engine.Walker;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class StudentController implements KeyListener  {
+public class MainCharacterController implements KeyListener {
 
-    Student student;
+    MainCharacter mainCharacter;
     int speed = 5;
 
-    public StudentController(Student student) {
-        this.student = student;
+    public MainCharacterController(MainCharacter mainCharacter) {
+        this.mainCharacter = mainCharacter;
     }
 
     @Override
@@ -22,14 +20,12 @@ public class StudentController implements KeyListener  {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("key pressed: " + e.getKeyChar());
-
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_A) {
-            student.startWalking(-speed);
+            mainCharacter.startWalking(-speed);
         } else if (code == KeyEvent.VK_D) {
-            student.startWalking(speed);
+            mainCharacter.startWalking(speed);
         } else if (code == KeyEvent.VK_SHIFT) {
             if (speed == 5) {
                 speed = 10;
@@ -38,8 +34,8 @@ public class StudentController implements KeyListener  {
             }
         }
 
-        if (code == KeyEvent.VK_SPACE){
-            student.jump(5);
+        if (code == KeyEvent.VK_SPACE) {
+            mainCharacter.jump(5);
         }
 
     }
@@ -47,13 +43,12 @@ public class StudentController implements KeyListener  {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_A) {
-            student.startWalking(0);
+            mainCharacter.startWalking(0);
         } else if (code == KeyEvent.VK_D) {
-            student.startWalking(0);
+            mainCharacter.startWalking(0);
         } else if (code == KeyEvent.VK_SHIFT) {
             if (speed == 10) {
                 speed = 5;
@@ -62,8 +57,8 @@ public class StudentController implements KeyListener  {
             }
         }
 
-        if (code == KeyEvent.VK_SPACE){
-            student.jump(0);
+        if (code == KeyEvent.VK_SPACE) {
+            mainCharacter.jump(0);
         }
 
     }
