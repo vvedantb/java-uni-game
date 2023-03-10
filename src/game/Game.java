@@ -19,13 +19,11 @@ public class Game {
     public Game() {
 
         GameWorld world = new GameWorld(); //1. make an empty game world
-        GameView view = new GameView(world, 800, 600); //3. make a view to look into the game world
+        GameView view = new GameView(world, 800, 800); //3. make a view to look into the game world
 //        view.setGridResolution(1); //optional: draw a 1-metre grid over the view
-
 
         StudentController controller = new StudentController(world.getStudent());
         view.addKeyListener(controller);
-
 
         MouseHandler mouseHandler = new MouseHandler(world, view);
         view.addMouseListener(mouseHandler);
@@ -37,7 +35,7 @@ public class Game {
         frame.add(view); //   view to it
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // enable the frame to quit the application
         frame.setLocationByPlatform(true); // when the x button is pressed
-        frame.setResizable(true); // don't let the frame be resized
+        frame.setResizable(false); // don't let the frame be resized
         frame.pack(); // size the frame to fit the world view
         frame.setVisible(true); // finally, make the frame visible
 
