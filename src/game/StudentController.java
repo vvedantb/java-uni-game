@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 public class StudentController implements KeyListener  {
 
     Student student;
+    int speed = 5;
 
     public StudentController(Student student) {
         this.student = student;
@@ -25,13 +26,18 @@ public class StudentController implements KeyListener  {
 
         int code = e.getKeyCode();
 
-        if (code == KeyEvent.VK_1) {
-            student.startWalking(-5);
-        } else if (code == KeyEvent.VK_2) {
-            student.startWalking(5);
+        if (code == KeyEvent.VK_A) {
+            student.startWalking(-speed);
+        } else if (code == KeyEvent.VK_D) {
+            student.startWalking(speed);
+        } else if (code == KeyEvent.VK_SHIFT) {
+            if (speed == 5) {
+                speed = 10;
+            } else if (speed == -5) {
+                speed = -10;
+            }
         }
 
-//        int code = e.getKeyCode();
         if (code == KeyEvent.VK_SPACE){
             student.jump(5);
         }
@@ -44,10 +50,16 @@ public class StudentController implements KeyListener  {
 
         int code = e.getKeyCode();
 
-        if (code == KeyEvent.VK_1) {
-            student.stopWalking();
-        } else if (code == KeyEvent.VK_2) {
-            student.stopWalking();
+        if (code == KeyEvent.VK_A) {
+            student.startWalking(0);
+        } else if (code == KeyEvent.VK_D) {
+            student.startWalking(0);
+        } else if (code == KeyEvent.VK_SHIFT) {
+            if (speed == 10) {
+                speed = 5;
+            } else if (speed == -10) {
+                speed = -5;
+            }
         }
 
         if (code == KeyEvent.VK_SPACE){
