@@ -5,16 +5,18 @@ import city.cs.engine.CollisionListener;
 
 public class ApplePickup implements CollisionListener {
 
-    private final MainCharacter mainCharacter;
+    private final MainCharacter mc;
 
-    public ApplePickup(MainCharacter s) {
-        this.mainCharacter = s;
+    public ApplePickup(MainCharacter mc) {
+        this.mc = mc;
     }
 
     @Override
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Apple){
-            mainCharacter.addApples();
+            mc.addLife();
+            // gets other body and sets it as type Apple then runs the appleCollected method
+            ((Apple) e.getOtherBody()).appleCollected();
             e.getOtherBody().destroy();
         }
 
