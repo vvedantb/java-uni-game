@@ -12,7 +12,8 @@ public class Game {
         GameView view = new GameView(world, 700, 700); //3. make a view to look into the game world
 //        view.setGridResolution(1); //optional: draw a 1-metre grid over the view
 
-        PlayerController controller = new PlayerController(world.getMainCharacter());
+
+        PlayerController controller = new PlayerController(world.getPlayer());
         view.addKeyListener(controller);
 
         MouseHandler mouseHandler = new MouseHandler(world, view);
@@ -20,6 +21,11 @@ public class Game {
 
         GiveFocus focus = new GiveFocus(view);
         view.addMouseListener(focus);
+
+
+        Tracker tracker = new Tracker(view, world.getPlayer());
+//        world.addStepListener(tracker);
+
 
         final JFrame frame = new JFrame("City Game"); //4. create a Java window (frame) and add the game
         frame.add(view); //   view to it
@@ -39,4 +45,5 @@ public class Game {
     public static void main(String[] args) {
         new Game();
     }
+
 }
