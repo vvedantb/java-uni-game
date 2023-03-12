@@ -10,8 +10,6 @@ import java.util.Random;
 public class GameWorld extends World {
 
     public Player player;
-
-    public Tree grassTree;
     public Slime slime;
 
     public GameWorld() {
@@ -39,6 +37,11 @@ public class GameWorld extends World {
         new Apple(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
         new Apple(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
         new Apple(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
+
+        // Coins
+        new Coin(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
+        new Coin(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
+        new Coin(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
 
 
         // Tree
@@ -71,17 +74,14 @@ public class GameWorld extends World {
         // Slime enemy
         slime = new Slime(this);
 
-        GenericCollisionListener applePickup = new GenericCollisionListener(player);
-        player.addCollisionListener(applePickup);
-
-        GenericCollisionListener encounter = new GenericCollisionListener(player);
-        player.addCollisionListener(encounter);
+        GenericCollisionListener cl = new GenericCollisionListener(player);
+        player.addCollisionListener(cl);
 
 //        GenericCollisionListener gcl = new GenericCollisionListener();
 //        mainCharacter.addCollisionListener(gcl);
     }
 
-    public Player getMainCharacter(){
+    public Player getPlayer(){
         return player;
     }
 
