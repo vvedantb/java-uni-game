@@ -4,17 +4,20 @@ import city.cs.engine.*;
 import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class GameWorld extends World {
+public class GameWorld extends World implements ActionListener {
 
     public Player player;
     public Slime slime;
+    public Random random = new Random();
+    public Timer t;
 
     public GameWorld() {
-        Random random = new Random();
-
 
         // Ground border
         Shape horizontalBar = new BoxShape(30, 0.5f);
@@ -34,14 +37,11 @@ public class GameWorld extends World {
 
 
         // Apples
-        new Apple(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
-        new Apple(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
-        new Apple(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
+        new Apple(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
+
 
         // Coins
-        new Coin(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
-        new Coin(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
-        new Coin(this).setPosition(new Vec2(random.nextFloat()*34-17, random.nextFloat()*10));
+        new Coin(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
 
 
         // Tree
@@ -77,12 +77,20 @@ public class GameWorld extends World {
         GenericCollisionListener cl = new GenericCollisionListener(player);
         player.addCollisionListener(cl);
 
-//        GenericCollisionListener gcl = new GenericCollisionListener();
-//        mainCharacter.addCollisionListener(gcl);
+        t = new Timer(3000, this);
+        t.setInitialDelay(5000);
+        t.start();
+
     }
 
-    public Player getPlayer(){
+    public Player getPlayer() {
         return player;
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        new Apple(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
+        t.setDelay(1000);
+        new Coin(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
+    }
 }

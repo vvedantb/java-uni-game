@@ -1,6 +1,6 @@
 package game;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 //Your main game entry point
 public class Game {
@@ -19,12 +19,14 @@ public class Game {
         MouseHandler mouseHandler = new MouseHandler(world, view);
         view.addMouseListener(mouseHandler);
 
-        GiveFocus focus = new GiveFocus(view);
-        view.addMouseListener(focus);
-
 
         Tracker tracker = new Tracker(view, world.getPlayer());
 //        world.addStepListener(tracker);
+
+
+
+        GiveFocus focus = new GiveFocus(view);
+        view.addMouseListener(focus);
 
 
         final JFrame frame = new JFrame("City Game"); //4. create a Java window (frame) and add the game
