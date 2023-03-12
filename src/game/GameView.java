@@ -23,6 +23,12 @@ public class GameView extends UserView {
     @Override
     protected void paintForeground(Graphics2D g){
 
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.PLAIN, 16));
+        g.drawString("Lives: " + Player.getLives(), 300, 0);
+        g.drawString("Coins: " + Player.getCoins(), 280, 0);
+
+
         if (Player.getLives() >= 3){
             g.drawImage(new ImageIcon("data/hearts/3 hearts.png").getImage(), 317, 0, 66, 22, this);
         } else if (Player.getLives() == 2){
@@ -31,6 +37,7 @@ public class GameView extends UserView {
             g.drawImage(new ImageIcon("data/hearts/1 heart.png").getImage(), 317, 0, 66, 22, this);
         } else if (Player.getLives() == 0){
             g.drawImage(new ImageIcon("data/hearts/0 hearts.png").getImage(), 317, 0,  66, 22,this);
+            g.drawImage(new ImageIcon("data/TheEnd.png").getImage(), 0, 0, 291, 79, this);
         }
     }
 
