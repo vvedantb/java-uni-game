@@ -5,18 +5,15 @@ import city.cs.engine.CollisionListener;
 
 public class SlimeEncounter implements CollisionListener {
 
-    private final MainCharacter mainCharacter;
-
-    public SlimeEncounter(MainCharacter mc) {
-        this.mainCharacter = mc;
+    public SlimeEncounter(Player mc) {
     }
 
     @Override
     public void collide(CollisionEvent e){
-        if (e.getOtherBody() instanceof MainCharacter){
-            if (mainCharacter.getLives() >0) {
-                mainCharacter.removeLife();
-            } else if (mainCharacter.getLives() <=0) {
+        if (e.getOtherBody() instanceof Player){
+            if (Player.getLives() > 0) {
+                Player.removeLife();
+            } else if (Player.getLives() < 0) {
                 e.getOtherBody().destroy();
             }
 

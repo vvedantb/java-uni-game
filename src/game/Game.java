@@ -12,7 +12,7 @@ public class Game {
         GameView view = new GameView(world, 700, 700); //3. make a view to look into the game world
 //        view.setGridResolution(1); //optional: draw a 1-metre grid over the view
 
-        MainCharacterController controller = new MainCharacterController(world.getMainCharacter());
+        PlayerController controller = new PlayerController(world.getMainCharacter());
         view.addKeyListener(controller);
 
         MouseHandler mouseHandler = new MouseHandler(world, view);

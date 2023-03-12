@@ -3,14 +3,14 @@ package game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class MainCharacterController implements KeyListener {
+public class PlayerController implements KeyListener {
 
-    MainCharacter mainCharacter;
+    Player player;
     int speed = 5;
 
 
-    public MainCharacterController(MainCharacter mainCharacter) {
-        this.mainCharacter = mainCharacter;
+    public PlayerController(Player player) {
+        this.player = player;
     }
 
     @Override
@@ -22,14 +22,14 @@ public class MainCharacterController implements KeyListener {
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_A) {
-            mainCharacter.startWalking(-speed);
-            mainCharacter.setImage("run left");
+            player.startWalking(-speed);
+            player.setImage("run left");
         } else if (code == KeyEvent.VK_D) {
-            mainCharacter.startWalking(speed);
-            mainCharacter.setImage("run right");
+            player.startWalking(speed);
+            player.setImage("run right");
         } else if (code == KeyEvent.VK_SPACE) {
-            mainCharacter.jump(5);
-            mainCharacter.setImage("jump");
+            player.jump(5);
+            player.setImage("jump");
         } else if (code == KeyEvent.VK_SHIFT) {
             if (speed == 5) {
                 speed = 10;
@@ -37,7 +37,7 @@ public class MainCharacterController implements KeyListener {
                 speed = -10;
             }
         } else {
-            mainCharacter.setImage("default");
+            player.setImage("default");
         }
 
 
@@ -50,9 +50,9 @@ public class MainCharacterController implements KeyListener {
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_A) {
-            mainCharacter.startWalking(0);
+            player.startWalking(0);
         } else if (code == KeyEvent.VK_D) {
-            mainCharacter.startWalking(0);
+            player.startWalking(0);
         } else if (code == KeyEvent.VK_SHIFT) {
             if (speed == 10) {
                 speed = 5;
@@ -62,7 +62,7 @@ public class MainCharacterController implements KeyListener {
         }
 
         if (code == KeyEvent.VK_SPACE) {
-            mainCharacter.jump(0);
+            player.jump(0);
         }
 
     }
