@@ -71,10 +71,10 @@ public class GameWorld extends World {
         // Slime enemy
         slime = new Slime(this);
 
-        ApplePickup applePickup = new ApplePickup(player);
+        GenericCollisionListener applePickup = new GenericCollisionListener(player);
         player.addCollisionListener(applePickup);
 
-        SlimeEncounter encounter = new SlimeEncounter(player);
+        GenericCollisionListener encounter = new GenericCollisionListener(player);
         player.addCollisionListener(encounter);
 
 //        GenericCollisionListener gcl = new GenericCollisionListener();
