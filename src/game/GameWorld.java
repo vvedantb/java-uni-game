@@ -36,21 +36,13 @@ public class GameWorld extends World implements ActionListener {
         rightBar.setPosition(new Vec2(18f, Window.HEIGHT));
 
 
-        // Apples
-        new Apple(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
-
-
-        // Coins
-        new Coin(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
-
-
         // Tree
         new Tree(this).setPosition(new Vec2(-15f, 6f));
 
 
         // Platforms
         new Platform(this).setPosition(new Vec2(-8, 0));
-        new Platform(this).setPosition(new Vec2(0, -2));
+        new Lift(this).setPosition(new Vec2(0, -2));
         new Platform(this).setPosition(new Vec2(6, 0));
 
 
@@ -77,8 +69,8 @@ public class GameWorld extends World implements ActionListener {
         GenericCollisionListener cl = new GenericCollisionListener(player);
         player.addCollisionListener(cl);
 
-        t = new Timer(3000, this);
-        t.setInitialDelay(5000);
+        t = new Timer(10000, this);
+//        t.setInitialDelay(0);
         t.start();
 
     }
@@ -90,7 +82,6 @@ public class GameWorld extends World implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         new Apple(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
-        t.setDelay(1000);
         new Coin(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
     }
 }
