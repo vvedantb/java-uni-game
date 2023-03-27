@@ -5,6 +5,8 @@ import city.cs.engine.CollisionListener;
 
 public class GenericCollisionListener implements CollisionListener {
 
+    private GameLevel level;
+    private Game game;
     private final int counter = 0;
 
     public GenericCollisionListener(Player p) {
@@ -20,7 +22,7 @@ public class GenericCollisionListener implements CollisionListener {
         if (e.getOtherBody() instanceof Apple){
             Player.setLives(Player.getLives()+1);
             // gets other body and sets it as type Apple then runs the appleCollected method
-            ((Apple) e.getOtherBody()).appleCollected();
+//            ((Apple) e.getOtherBody()).appleCollected();
             e.getOtherBody().destroy();
         }
 

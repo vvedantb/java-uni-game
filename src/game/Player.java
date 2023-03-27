@@ -1,6 +1,7 @@
 package game;
 
 import city.cs.engine.*;
+import org.jbox2d.common.Vec2;
 
 public class Player extends Walker {
 
@@ -9,13 +10,15 @@ public class Player extends Walker {
     private static int lives;
     private static int coins;
 
-    public Player(GameWorld world) {
+    public Player(GameLevel world) {
         super(world, studentShape);
         addImage(image);
         this.setAlwaysOutline(true);
+        this.setPosition(new Vec2(0, 10));
         lives = 1;
         coins = 0;
     }
+
 
     public static int getCoins() {
         return coins;
@@ -43,8 +46,12 @@ public class Player extends Walker {
                 image = new BodyImage("data/maskdude_jump.png", 4f);
                 addImage(image);
             }
-            case "default" -> {
+            case "default right" -> {
                 image = new BodyImage("data/maskdude_idle.gif", 4f);
+                addImage(image);
+            }
+            case "default left" -> {
+                image = new BodyImage("data/maskdude_idle_mirror.gif", 4f);
                 addImage(image);
             }
         }

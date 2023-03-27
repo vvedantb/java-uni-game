@@ -28,7 +28,7 @@ public class PlayerController implements KeyListener {
             player.startWalking(speed);
             player.setImage("run right");
         } else if (code == KeyEvent.VK_SPACE) {
-            player.jump(5);
+            player.jump(10);
             player.setImage("jump");
         } else if (code == KeyEvent.VK_SHIFT) {
             if (speed == 5) {
@@ -37,7 +37,7 @@ public class PlayerController implements KeyListener {
                 speed = -10;
             }
         } else {
-            player.setImage("default");
+            player.setImage("default right");
         }
 
 
@@ -51,8 +51,10 @@ public class PlayerController implements KeyListener {
 
         if (code == KeyEvent.VK_A) {
             player.startWalking(0);
+            player.setImage("default left");
         } else if (code == KeyEvent.VK_D) {
             player.startWalking(0);
+            player.setImage("default right");
         } else if (code == KeyEvent.VK_SHIFT) {
             if (speed == 10) {
                 speed = 5;

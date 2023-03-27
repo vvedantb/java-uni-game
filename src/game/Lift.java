@@ -11,7 +11,7 @@ public class Lift extends StaticBody implements StepListener {
     private final float top, bottom;
     private float delta;
 
-    public Lift(GameWorld world) {
+    public Lift(GameLevel world) {
         super(world, liftShape);
         addImage(image);
         startPosition = this.getPosition();

@@ -6,7 +6,7 @@ public class Block extends StaticBody {
 
     private static final Shape groundBlockShape = new BoxShape(2.5f, 2.5f);
 
-    public Block(GameWorld world, String block) {
+    public Block(GameLevel world, String block) {
         super(world, groundBlockShape);
         setBlock(block);
         this.setAlwaysOutline(true);

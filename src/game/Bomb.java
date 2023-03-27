@@ -16,7 +16,7 @@ public class Bomb implements ActionListener {
     private static final BodyImage bombImage = new BodyImage("data/Bomb/bomb_idle.gif", 3.0f);
     private static final BodyImage explosionImage = new BodyImage("data/Bomb/bomb_explode.gif", 3.0f);
 
-    public Bomb(GameWorld world, Vec2 position, int time){
+    public Bomb(GameLevel world, Vec2 position, int time){
         DynamicBody bombBody = new DynamicBody(world, bombShape);
         bombBody.addImage(bombImage);
         bombBody.setPosition(new Vec2(0, 0));

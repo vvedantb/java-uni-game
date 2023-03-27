@@ -12,7 +12,7 @@ public class Slime extends Walker implements StepListener {
     private final int SPEED = 3;
     private final int RANGE = 4;
 
-    public Slime(GameWorld world) {
+    public Slime(GameLevel world) {
         super(world, slimeShape);
         addImage(image);
         lives = 3;
@@ -23,7 +23,7 @@ public class Slime extends Walker implements StepListener {
     }
 
     public void shoot() {
-        Goo goo = new Goo((GameWorld) getWorld());
+        Goo goo = new Goo((GameLevel) getWorld());
         goo.setPosition(this.getPosition());
         goo.setLinearVelocity(new Vec2(0, -10));
     }
