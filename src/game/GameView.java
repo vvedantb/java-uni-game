@@ -9,8 +9,8 @@ public class GameView extends UserView {
 
     private final Image background;
 
-    public GameView(GameLevel world, int width, int height) {
-        super(world, width, height);
+    public GameView(GameLevel level, int width, int height) {
+        super(level, width, height);
         background = new ImageIcon("data/background/bg.png").getImage();
     }
 

@@ -9,8 +9,8 @@ public class Trampoline extends StaticBody {
     private static final Shape jumperImage = null;
     private static final BodyImage image = new BodyImage("data/", 2.0f);
 
-    public Trampoline(GameLevel world) {
-        super(world, jumperImage);
+    public Trampoline(GameLevel level) {
+        super(level, jumperImage);
         addImage(image);
         this.setAlwaysOutline(true);
     }

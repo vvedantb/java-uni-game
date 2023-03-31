@@ -7,22 +7,26 @@ public class GenericCollisionListener implements CollisionListener {
 
     private GameLevel level;
     private Game game;
-    private final int counter = 0;
+    private int collision_counter;
 
-    public GenericCollisionListener(Player p) {
+    public GenericCollisionListener(GameLevel level, Game game) {
+        this.level = level;
+        this.game = game;
     }
 
     @Override
     public void collide(CollisionEvent e) {
-//        counter++;
-//        System.out.print("Collision " + counter + ":\n" +
+//        collision_counter++;
+//        System.out.print("Collision " + collision_counter + ":\n" +
 //                "  rep. body:" + e.getReportingBody() + "\n" +
 //                "  oth. body:" + e.getOtherBody() + "\n");
 
+        if (e.getOtherBody() instanceof Apple && level.isComplete()){
+            game.goToNextLevel();
+        }
+
         if (e.getOtherBody() instanceof Apple){
             Player.setLives(Player.getLives()+1);
-            // gets other body and sets it as type Apple then runs the appleCollected method
-//            ((Apple) e.getOtherBody()).appleCollected();
             e.getOtherBody().destroy();
         }
 
@@ -30,7 +34,6 @@ public class GenericCollisionListener implements CollisionListener {
             Player.setCoins(Player.getCoins()+1);
             e.getOtherBody().destroy();
         }
-
 
         if (e.getOtherBody() instanceof Slime){
             System.out.println("Collision of Slime and Player");

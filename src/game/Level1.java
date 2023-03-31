@@ -9,14 +9,15 @@ import java.awt.*;
 
 public class Level1 extends GameLevel {
 
-    public Level1(Game game){
+    public Level1(Game game) {
         super(game);
+
         // Ground border
         Shape horizontalBar = new BoxShape(30, 0.5f);
         StaticBody ground = new StaticBody(this, horizontalBar);
         ground.setPosition(new Vec2(0f, -18f));
 
-        // Side borders
+        // Side border shape
         Shape verticalBar = new BoxShape(0.5f, 30);
 
         // Left border
@@ -27,16 +28,13 @@ public class Level1 extends GameLevel {
         StaticBody rightBar = new StaticBody(this, verticalBar);
         rightBar.setPosition(new Vec2(18f, Window.HEIGHT));
 
-
         // Tree
         new Tree(this).setPosition(new Vec2(-15f, 6f));
-
 
         // Platforms
         new Platform(this).setPosition(new Vec2(-8, 0));
         new Lift(this).setPosition(new Vec2(0, -2));
         new Platform(this).setPosition(new Vec2(6, 0));
-
 
         // Grass blocks
         new Block(this, "grass").setPosition(new Vec2(-15f, 0f));
@@ -51,8 +49,17 @@ public class Level1 extends GameLevel {
         new Block(this, "dirt").setPosition(new Vec2(10f, -15f));
         new Block(this, "dirt").setPosition(new Vec2(15f, -15f));
 
-        GenericCollisionListener cl = new GenericCollisionListener(getPlayer());
-        getPlayer().addCollisionListener(cl);
+    }
+
+    @Override
+    public boolean isComplete() {
+        if (getPlayer().getCoins() >= 1) {
+            System.out.println("Level 1 is complete!");
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }

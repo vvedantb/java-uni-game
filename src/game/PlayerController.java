@@ -4,12 +4,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class PlayerController implements KeyListener {
-
     Player player;
     int speed = 5;
 
-
     public PlayerController(Player player) {
+        this.player = player;
+    }
+
+    public void updatePlayer(Player player) {
         this.player = player;
     }
 
@@ -39,11 +41,7 @@ public class PlayerController implements KeyListener {
         } else {
             player.setImage("default right");
         }
-
-
-
     }
-
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -66,7 +64,5 @@ public class PlayerController implements KeyListener {
         if (code == KeyEvent.VK_SPACE) {
             player.jump(0);
         }
-
     }
-
 }

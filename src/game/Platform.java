@@ -14,8 +14,8 @@ public class Platform extends StaticBody {
 //    private final Vec2 startPosition;
 //    private boolean goingLeft;
 
-    public Platform(GameLevel world) {
-        super(world, grassBlockShape);
+    public Platform(GameLevel level) {
+        super(level, grassBlockShape);
         addImage(image);
         this.setAlwaysOutline(true);
 //

@@ -10,8 +10,8 @@ public class Player extends Walker {
     private static int lives;
     private static int coins;
 
-    public Player(GameLevel world) {
-        super(world, studentShape);
+    public Player(GameLevel level) {
+        super(level, studentShape);
         addImage(image);
         this.setAlwaysOutline(true);
         this.setPosition(new Vec2(0, 10));

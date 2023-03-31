@@ -42,6 +42,21 @@ public class Game {
         view.requestFocus();
     }
 
+    public void goToNextLevel() {
+        if (level instanceof Level1) {
+            System.out.println("Well done! Level 1 complete!");
+            level.stop();
+            level = new Level2(this);
+            view.setWorld(level);
+//            level.setPlayer(level.getPlayer());
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level2) {
+            System.out.println("Well done! Game complete!");
+            System.exit(0);
+        }
+    }
+
     public static void main(String[] args) {
         new Game();
     }

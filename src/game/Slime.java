@@ -12,11 +12,11 @@ public class Slime extends Walker implements StepListener {
     private final int SPEED = 3;
     private final int RANGE = 4;
 
-    public Slime(GameLevel world) {
-        super(world, slimeShape);
+    public Slime(GameLevel level) {
+        super(level, slimeShape);
         addImage(image);
         lives = 3;
-        world.addStepListener(this);
+        level.addStepListener(this);
         this.setPosition(new Vec2(0f, -10f));
         startWalking(SPEED);
         this.setAlwaysOutline(true);
