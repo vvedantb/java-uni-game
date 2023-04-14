@@ -3,6 +3,10 @@ package game;
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 public class Slime extends Walker implements StepListener {
 
     private static final Shape slimeShape = new PolygonShape(-1.23f, 1.12f, 1.27f, 1.06f, 2.53f, -1.85f, -2.5f, -1.78f, -1.35f, 0.99f);

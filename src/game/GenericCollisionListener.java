@@ -3,6 +3,8 @@ package game;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 
+import static game.Player.damagedSound;
+
 public class GenericCollisionListener implements CollisionListener {
 
     private GameLevel level;
@@ -38,6 +40,7 @@ public class GenericCollisionListener implements CollisionListener {
         if (e.getOtherBody() instanceof Slime){
             System.out.println("Collision of Slime and Player");
             if (Player.getLives() > 0) {
+                damagedSound.play();
                 Player.setLives(Player.getLives()-1);
             } else if (Player.getLives() < 0) {
                 e.getOtherBody().destroy();
