@@ -1,6 +1,11 @@
 package game;
 
+import city.cs.engine.SoundClip;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.io.IOException;
 
 //Your main game entry point
 public class Game {
@@ -24,6 +29,15 @@ public class Game {
 
         Tracker tracker = new Tracker(view, level.getPlayer());
 //        world.addStepListener(tracker);
+
+        try {
+            SoundClip gameMusic = new SoundClip("data/music/gametheme2.wav");
+            gameMusic.loop();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            //code in here will deal with any errorsdddd
+            //that might occur while loading/playing sound
+            System.out.println(e);
+        }
 
         GiveFocus focus = new GiveFocus(view);
         view.addMouseListener(focus);
