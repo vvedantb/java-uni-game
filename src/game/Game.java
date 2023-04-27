@@ -5,6 +5,7 @@ import city.cs.engine.SoundClip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 //Your main game entry point
@@ -47,6 +48,10 @@ public class Game {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // enable the frame to quit the application
         frame.setLocationByPlatform(true); // when the x button is pressed
         frame.setResizable(false); // don't let the frame be resized
+
+        ControlPanel controlPanel = new ControlPanel();
+        frame.add(controlPanel.mainPanel, BorderLayout.WEST);
+
         frame.pack(); // size the frame to fit the world view
         frame.setVisible(true); // finally, make the frame visible
 
