@@ -35,7 +35,7 @@ public class Game {
             SoundClip gameMusic = new SoundClip("data/music/gametheme2.wav");
             gameMusic.loop();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            //code in here will deal with any errorsdddd
+            //code in here will deal with any errors
             //that might occur while loading/playing sound
             System.out.println(e);
         }
@@ -75,6 +75,28 @@ public class Game {
             System.exit(0);
         }
     }
+
+
+    public void setLevel(GameLevel level){
+        this.level = level;
+
+        if (level instanceof Level1) {
+            System.out.println("Starting Level 1!");
+//            level.stop();
+//            level = new Level1(this);
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level2) {
+            System.out.println("Starting Level 2!");
+//            level.stop();
+//            level = new Level2(this);
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        }
+    }
+
 
     public static void main(String[] args) {
         new Game();

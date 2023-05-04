@@ -41,4 +41,8 @@ public abstract class GameLevel extends World implements ActionListener {
     }
 
     public abstract boolean isComplete();
+
+
+    public abstract String getLevelName();
+
 }

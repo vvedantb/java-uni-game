@@ -62,4 +62,9 @@ public class Level1 extends GameLevel {
 
     }
 
+    @Override
+    public String getLevelName() {
+        return "Level1";
+    }
+
 }

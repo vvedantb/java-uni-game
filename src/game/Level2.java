@@ -35,4 +35,9 @@ public class Level2 extends GameLevel {
         System.out.println("Level 2 isComplete is not implemented yet...");
         return false;
     }
+
+    @Override
+    public String getLevelName() {
+        return "Level2";
+    }
 }

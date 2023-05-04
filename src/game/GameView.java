@@ -25,8 +25,8 @@ public class GameView extends UserView {
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.PLAIN, 16));
-        g.drawString("Lives: " + Player.getLives(), 300, 0);
-        g.drawString("Coins: " + Player.getCoins(), 280, 0);
+        g.drawString("Lives: " + Player.getLives(), 300, 100);
+        g.drawString("Coins: " + Player.getCoins(), 280, 50);
 
 
         if (Player.getLives() >= 3){
