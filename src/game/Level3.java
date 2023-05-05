@@ -39,8 +39,12 @@ public class Level3 extends GameLevel {
 
     @Override
     public boolean isComplete() {
-        System.out.println("Level 2 isComplete is not implemented yet...");
-        return false;
+        if (getPlayer().getCoins() >= 8) {
+            System.out.println("Level 3 is complete!");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

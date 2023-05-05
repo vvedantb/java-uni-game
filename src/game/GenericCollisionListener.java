@@ -51,8 +51,9 @@ public class GenericCollisionListener implements CollisionListener {
 
         if (e.getOtherBody() instanceof Bomb){
             System.out.println("Bomb collision!");
+            e.getOtherBody().destroy();
             if (e.getReportingBody() instanceof Player){
-                Player.setLives(0);
+                Player.setLives(Player.getLives()-1);
                 e.getReportingBody().destroy();
             }
         }
