@@ -41,6 +41,10 @@ public class Level1 extends GameLevel {
         new Block(this, "grass").setPosition(new Vec2(-15f, 0f));
         new Block(this, "grass").setPosition(new Vec2(15f, 0f));
 
+        // Bomb
+        new Bomb(game, this, new Vec2(0, 0), 5000);
+
+
         // Dirt blocks
         for (int i=-20; i<20; i++){
             new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));

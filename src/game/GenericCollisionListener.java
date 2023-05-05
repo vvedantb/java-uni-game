@@ -2,6 +2,7 @@ package game;
 
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
+import city.cs.engine.DynamicBody;
 
 import static game.Player.damagedSound;
 
@@ -9,7 +10,7 @@ public class GenericCollisionListener implements CollisionListener {
 
     private GameLevel level;
     private Game game;
-    private int collision_counter;
+//    private int collision_counter;
 
     public GenericCollisionListener(GameLevel level, Game game) {
         this.level = level;
@@ -46,8 +47,18 @@ public class GenericCollisionListener implements CollisionListener {
                 e.getOtherBody().destroy();
                 System.out.println("Game ends");
             }
-
         }
+
+        if (e.getOtherBody() instanceof Bomb){
+            System.out.println("Bomb collision!");
+            if (e.getReportingBody() instanceof Player){
+                Player.setLives(0);
+                e.getReportingBody().destroy();
+            }
+        }
+
+
+
     }
 
 }
