@@ -28,6 +28,12 @@ public class Level2 extends GameLevel {
         // Right border
         StaticBody rightBar = new StaticBody(this, verticalBar);
         rightBar.setPosition(new Vec2(18f, Window.HEIGHT));
+
+
+        // Dirt blocks
+        for (int i=-20; i<20; i++){
+            new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
+        }
     }
 
     @Override

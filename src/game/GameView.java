@@ -1,6 +1,7 @@
 package game;
 
 import city.cs.engine.UserView;
+import org.jbox2d.common.Vec2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,10 +22,8 @@ public class GameView extends UserView {
         g.drawImage(background, 0, 0, 700, 700, this);
     }
 
-
     @Override
     protected void paintForeground(Graphics2D g){
-
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.PLAIN, 16));
         g.drawString("Lives: " + level.getPlayer().getLives(), 300, 100);

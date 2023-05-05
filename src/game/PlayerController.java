@@ -38,6 +38,8 @@ public class PlayerController implements KeyListener {
             } else if (speed == -5) {
                 speed = -10;
             }
+        } else if (code == KeyEvent.VK_Q){
+            player.shoot();
         } else {
             player.setImage("default right");
         }

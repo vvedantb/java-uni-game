@@ -28,6 +28,7 @@ public class Level1 extends GameLevel {
         StaticBody rightBar = new StaticBody(this, verticalBar);
         rightBar.setPosition(new Vec2(18f, Window.HEIGHT));
 
+
         // Tree
         new Tree(this).setPosition(new Vec2(-15f, 6f));
 
@@ -41,13 +42,16 @@ public class Level1 extends GameLevel {
         new Block(this, "grass").setPosition(new Vec2(15f, 0f));
 
         // Dirt blocks
-        new Block(this, "dirt").setPosition(new Vec2(-15f, -15f));
-        new Block(this, "dirt").setPosition(new Vec2(-10f, -15f));
-        new Block(this, "dirt").setPosition(new Vec2(-5f, -15f));
-        new Block(this, "dirt").setPosition(new Vec2(0f, -15f));
-        new Block(this, "dirt").setPosition(new Vec2(5f, -15f));
-        new Block(this, "dirt").setPosition(new Vec2(10f, -15f));
-        new Block(this, "dirt").setPosition(new Vec2(15f, -15f));
+        for (int i=-20; i<20; i++){
+            new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
+        }
+//        new Block(this, "dirt").setPosition(new Vec2(-15f, -15f));
+//        new Block(this, "dirt").setPosition(new Vec2(-10f, -15f));
+//        new Block(this, "dirt").setPosition(new Vec2(-5f, -15f));
+//        new Block(this, "dirt").setPosition(new Vec2(0f, -15f));
+//        new Block(this, "dirt").setPosition(new Vec2(5f, -15f));
+//        new Block(this, "dirt").setPosition(new Vec2(10f, -15f));
+//        new Block(this, "dirt").setPosition(new Vec2(15f, -15f));
 
     }
 
