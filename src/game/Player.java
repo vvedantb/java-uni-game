@@ -107,6 +107,29 @@ public class Player extends Walker {
                     addImage(image);
                 }
             }
+        } else if (level instanceof Level3){
+            switch (type) {
+                case "run right" -> {
+                    image = new BodyImage("data/virtual_guy/run.gif", 4f);
+                    addImage(image);
+                }
+                case "run left" -> {
+                    image = new BodyImage("data/virtual_guy/run_left.gif", 4f);
+                    addImage(image);
+                }
+                case "jump" -> {
+                    image = new BodyImage("data/virtual_guy/jump.png", 4f);
+                    addImage(image);
+                }
+                case "default right" -> {
+                    image = new BodyImage("data/virtual_guy/idle.gif", 4f);
+                    addImage(image);
+                }
+                case "default left" -> {
+                    image = new BodyImage("data/virtual_guy/idle_left.gif", 4f);
+                    addImage(image);
+                }
+            }
         }
     }
 
