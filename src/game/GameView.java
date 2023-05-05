@@ -8,9 +8,11 @@ import java.awt.*;
 public class GameView extends UserView {
 
     private final Image background;
+    private GameLevel level;
 
     public GameView(GameLevel level, int width, int height) {
         super(level, width, height);
+        this.level = level;
         background = new ImageIcon("data/background/bg.png").getImage();
     }
 
@@ -25,8 +27,8 @@ public class GameView extends UserView {
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.PLAIN, 16));
-        g.drawString("Lives: " + Player.getLives(), 300, 100);
-        g.drawString("Coins: " + Player.getCoins(), 280, 50);
+        g.drawString("Lives: " + level.getPlayer().getLives(), 300, 100);
+        g.drawString("Coins: " + level.getPlayer().getCoins(), 280, 50);
 
 
         if (Player.getLives() >= 3){

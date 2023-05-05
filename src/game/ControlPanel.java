@@ -11,11 +11,9 @@ public class ControlPanel {
     private JButton quitButton;
     private JButton saveGameButton;
     private JButton loadGameButton;
-    private Game game;
-    private GameLevel level;
     public JPanel mainPanel;
 
-    public ControlPanel() {
+    public ControlPanel(Game game, GameLevel level) {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,7 +30,7 @@ public class ControlPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    GameSaverLoader.save(level, "game_data.txt");
+                    GameSaverLoader.save(level, "src/game_data.txt");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -42,7 +40,7 @@ public class ControlPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    game.setLevel(GameSaverLoader.load("game_data.txt", game));
+                    GameSaverLoader.load("src/game_data.txt", game);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

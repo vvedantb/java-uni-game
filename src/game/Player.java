@@ -11,8 +11,8 @@ public class Player extends Walker {
 
     private static final Shape studentShape = new PolygonShape(0.08f,1.38f, -0.77f,0.94f, -0.64f,-1.81f, 0.13f,-1.78f, 0.71f,0.43f, 0.65f,1.33f, 0.12f,1.4f);
     private BodyImage image = new BodyImage("data/maskdude.gif", 4f);
-    private static int lives;
-    private static int coins;
+    private static int lives = 1;
+    private static int coins = 0;
     public static SoundClip damagedSound;
 
     public Player(GameLevel level) {
@@ -20,8 +20,6 @@ public class Player extends Walker {
         addImage(image);
         this.setAlwaysOutline(true);
         this.setPosition(new Vec2(0, 10));
-        lives = 1;
-        coins = 0;
     }
 
     static {

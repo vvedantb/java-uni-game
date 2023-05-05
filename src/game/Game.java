@@ -49,7 +49,7 @@ public class Game {
         frame.setLocationByPlatform(true); // when the x button is pressed
         frame.setResizable(false); // don't let the frame be resized
 
-        ControlPanel controlPanel = new ControlPanel();
+        ControlPanel controlPanel = new ControlPanel(this, level);
         frame.add(controlPanel.mainPanel, BorderLayout.WEST);
 
         frame.pack(); // size the frame to fit the world view
@@ -78,19 +78,14 @@ public class Game {
 
 
     public void setLevel(GameLevel level){
-        this.level = level;
-
         if (level instanceof Level1) {
             System.out.println("Starting Level 1!");
-//            level.stop();
-//            level = new Level1(this);
             view.setWorld(level);
+
             controller.updatePlayer(level.getPlayer());
-            level.start();
+            level.start ();
         } else if (level instanceof Level2) {
-            System.out.println("Starting Level 2!");
-//            level.stop();
-//            level = new Level2(this);
+            System.out.println("Starting Level s2!");
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
             level.start();

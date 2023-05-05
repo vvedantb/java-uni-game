@@ -28,8 +28,7 @@ public class Coin extends DynamicBody {
     }
 
     @Override
-    public void destroy()
-    {
+    public void destroy(){
         coinSound.play();
         super.destroy();
     }
