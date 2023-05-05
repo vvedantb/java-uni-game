@@ -71,6 +71,13 @@ public class Game {
             controller.updatePlayer(level.getPlayer());
             level.start();
         } else if (level instanceof Level2) {
+            System.out.println("Well done! Level 2 complete!");
+            level.stop();
+            level = new Level3(this);
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level3) {
             System.out.println("Well done! Game complete!");
             System.exit(0);
         }
