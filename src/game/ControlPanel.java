@@ -3,15 +3,17 @@ package game;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 
 public class ControlPanel {
+    public JPanel mainPanel;
     private JButton startButton;
-    private JButton settingsButton1;
     private JButton quitButton;
     private JButton saveGameButton;
     private JButton loadGameButton;
-    public JPanel mainPanel;
+    private JCheckBox soundCheck;
 
     public ControlPanel(Game game, GameLevel level) {
         startButton.addActionListener(new ActionListener() {
@@ -43,6 +45,16 @@ public class ControlPanel {
                     GameSaverLoader.load("src/game_data.txt", game);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
+                }
+            }
+        });
+        soundCheck.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    // mute sound
+                } else {
+                    // Unmute sound
                 }
             }
         });
