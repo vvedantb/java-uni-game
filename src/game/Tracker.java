@@ -2,6 +2,7 @@ package game;
 
 import city.cs.engine.StepEvent;
 import city.cs.engine.StepListener;
+import org.jbox2d.common.Vec2;
 
 public class Tracker implements StepListener {
 
@@ -20,6 +21,6 @@ public class Tracker implements StepListener {
 
     @Override
     public void postStep(StepEvent stepEvent) {
-        view.setCentre(player.getPosition());
+        view.setCentre(new Vec2(player.getPosition()));
     }
 }

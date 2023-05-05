@@ -29,16 +29,16 @@ public class Game {
         view.addMouseListener(mouseHandler);
 
         Tracker tracker = new Tracker(view, level.getPlayer());
-//        world.addStepListener(tracker);
+//        level.addStepListener(tracker); // Focus camera to center of the player
 
-        try {
-            SoundClip gameMusic = new SoundClip("data/music/gametheme2.wav");
-            gameMusic.loop();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            //code in here will deal with any errors
-            //that might occur while loading/playing sound
-            System.out.println(e);
-        }
+//        try {
+//            SoundClip gameMusic = new SoundClip("data/music/gametheme2.wav");
+//            gameMusic.loop();
+//        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+//            //code in here will deal with any errors
+//            //that might occur while loading/playing sound
+//            System.out.println(e);
+//        }
 
         GiveFocus focus = new GiveFocus(view);
         view.addMouseListener(focus);
