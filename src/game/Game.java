@@ -109,7 +109,15 @@ public class Game implements ActionListener {
             controller.updatePlayer(level.getPlayer());
             level.start();
         } else if (level instanceof Level3) {
-            System.out.println("Well done! Game complete!");
+            System.out.println("Well done! Level 3 complete!");
+            objective_complete_sound.play();
+            level.stop();
+            level = new Level4(this);
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level4){
+            System.out.println("Well done! Game complete.");
             game_over_sound.play();
             Timer timer = new Timer(3000, this);
             timer.setRepeats(false);
@@ -131,6 +139,11 @@ public class Game implements ActionListener {
             level.start();
         } else if (level instanceof Level3) {
             System.out.println("Starting Level 3!");
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level4) {
+            System.out.println("Starting Level 4!");
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
             level.start();
