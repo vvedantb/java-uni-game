@@ -11,8 +11,11 @@ import java.awt.event.ActionListener;
 
 public class Level1 extends GameLevel {
 
+    private Slime slime;
     public Level1(Game game) {
         super(game);
+        slime = new Slime(this); // Slime enemy
+
 
         // Ground border
         Shape horizontalBar = new BoxShape(30, 0.5f);
@@ -51,6 +54,10 @@ public class Level1 extends GameLevel {
         for (int i=-20; i<20; i++){
             new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
         }
+    }
+
+    public Slime getSlime() {
+        return slime;
     }
 
     @Override

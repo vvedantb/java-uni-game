@@ -10,14 +10,12 @@ import java.util.Random;
 
 public abstract class GameLevel extends World implements ActionListener {
     private Player player;
-    private Slime slime;
 
     public Random random = new Random();
     public Timer t;
 
     public GameLevel(Game game) {
         player = new Player(this); // Player character
-        slime = new Slime(this); // Slime enemy
         t = new Timer(20000, this);
         t.setInitialDelay(0);
         t.start();
@@ -26,10 +24,6 @@ public abstract class GameLevel extends World implements ActionListener {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public Slime getSlime() {
-        return slime;
     }
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -45,11 +45,16 @@ public class Level2 extends GameLevel {
         // Bomb
 //        new Bomb(game, this, new Vec2(0, 0), 5000);
 
-
         // Dirt blocks
         for (int i=-20; i<20; i++){
             new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
         }
+
+        // Water blocks
+        new Block(this, "water1").setPosition(new Vec2(-15f, -10f));
+        new Block(this, "water1").setPosition(new Vec2(15f, -10f));
+
+
     }
 
     @Override

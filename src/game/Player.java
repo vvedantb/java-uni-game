@@ -10,7 +10,8 @@ import java.io.IOException;
 public class Player extends Walker {
 
     private static final Shape studentShape = new PolygonShape(0.08f, 1.38f, -0.77f, 0.94f, -0.64f, -1.81f, 0.13f, -1.78f, 0.71f, 0.43f, 0.65f, 1.33f, 0.12f, 1.4f);
-    public static SoundClip damagedSound;
+    protected static SoundClip damagedSound;
+    private static SoundClip low_on_health_sound;
     private static int lives = 1;
     private static int coins = 0;
     private GameLevel level;
@@ -18,18 +19,28 @@ public class Player extends Walker {
     static {
         try {
             damagedSound = new SoundClip("data/soundfx/slime_enemy_collide.wav");
-            System.out.println("Loading coin sound");
+            System.out.println("Loading collide sound");
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             System.out.println(e);
         }
     }
 
-    private BodyImage image = new BodyImage("data/maskdude.gif", 4f);
+    static {
+        try {
+            low_on_health_sound = new SoundClip("data/soundfx/low_on_health.wav");
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            System.out.println(e);
+        }
+    }
+
+    private BodyImage image;
+    //    private BodyImage image = new BodyImage("data/maskdude.gif", 4f);
 
     public Player(GameLevel level) {
         super(level, studentShape);
         this.level = level;
-        addImage(image);
+        setImage("default left");
+//        addImage(image);
         this.setAlwaysOutline(true);
         this.setPosition(new Vec2(0, 10));
     }
@@ -56,7 +67,6 @@ public class Player extends Walker {
         damagedSound.play();
         super.destroy();
     }
-
     public void setImage(String type) {
 
         removeAllImages();
@@ -84,7 +94,7 @@ public class Player extends Walker {
                     addImage(image);
                 }
             }
-        } else if (level instanceof Level2){
+        } else if (level instanceof Level2) {
             switch (type) {
                 case "run right" -> {
                     image = new BodyImage("data/pink_man/pink_man_run.gif", 4f);
@@ -107,7 +117,7 @@ public class Player extends Walker {
                     addImage(image);
                 }
             }
-        } else if (level instanceof Level3){
+        } else if (level instanceof Level3) {
             switch (type) {
                 case "run right" -> {
                     image = new BodyImage("data/virtual_guy/run.gif", 4f);
@@ -134,6 +144,6 @@ public class Player extends Walker {
     }
 
     public void shoot() {
-        
+
     }
 }

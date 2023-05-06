@@ -6,15 +6,19 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 //Your main game entry point
-public class Game {
+public class Game implements ActionListener {
 
     private GameLevel level;
     private GameView view;
     private PlayerController controller;
     private MouseHandler mouseHandler;
+    private static SoundClip objective_complete_sound;
+    private static SoundClip game_over_sound;
 
     //Initialise a new Game
     public Game() {
@@ -66,9 +70,31 @@ public class Game {
 
     }
 
+
+    static {
+        try {
+            objective_complete_sound = new SoundClip("data/soundfx/objective_complete.wav");
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            //code in here will deal with any errors
+            //that might occur while loading/playing sound
+            System.out.println(e);
+        }
+    }
+
+    static {
+        try {
+            game_over_sound = new SoundClip("data/soundfx/game_over.wav");
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            //code in here will deal with any errors
+            //that might occur while loading/playing sound
+            System.out.println(e);
+        }
+    }
+
     public void goToNextLevel() {
         if (level instanceof Level1) {
             System.out.println("Well done! Level 1 complete!");
+            objective_complete_sound.play();
             level.stop();
             level = new Level2(this);
             view.setWorld(level);
@@ -76,6 +102,7 @@ public class Game {
             level.start();
         } else if (level instanceof Level2) {
             System.out.println("Well done! Level 2 complete!");
+            objective_complete_sound.play();
             level.stop();
             level = new Level3(this);
             view.setWorld(level);
@@ -83,7 +110,10 @@ public class Game {
             level.start();
         } else if (level instanceof Level3) {
             System.out.println("Well done! Game complete!");
-            System.exit(0);
+            game_over_sound.play();
+            Timer timer = new Timer(3000, this);
+            timer.setRepeats(false);
+            timer.start();
         }
     }
 
@@ -110,5 +140,10 @@ public class Game {
 
     public static void main(String[] args) {
         new Game();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.exit(0);
     }
 }
