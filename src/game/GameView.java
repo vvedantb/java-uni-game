@@ -39,7 +39,12 @@ public class GameView extends UserView {
     protected void paintForeground(Graphics2D g) {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.PLAIN, 16));
-        g.drawString("Lives: " + level.getPlayer().getLives(), 100, 100);
+        if (level.getPlayer().getLives() > 3){
+            g.drawString("Lives: 3", 100, 100);
+        } else {
+            g.drawString("Lives: " + level.getPlayer().getLives(), 100, 100);
+        }
+
         g.drawString("Coins: " + level.getPlayer().getCoins(), 100, 50);
 
 
