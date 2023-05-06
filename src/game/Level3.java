@@ -5,10 +5,12 @@ import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
 import org.jbox2d.common.Vec2;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Level3 extends GameLevel {
-
     public Level3(Game game){
         super(game);
 
@@ -39,7 +41,7 @@ public class Level3 extends GameLevel {
 
     @Override
     public boolean isComplete() {
-        if (getPlayer().getCoins() >= 8) {
+        if (getPlayer().getCoins() > 2) {
             System.out.println("Level 3 is complete!");
             return true;
         } else {
@@ -51,4 +53,6 @@ public class Level3 extends GameLevel {
     public String getLevelName() {
         return "Level3";
     }
+
+
 }

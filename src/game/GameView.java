@@ -8,13 +8,22 @@ import java.awt.*;
 
 public class GameView extends UserView {
 
-    private final Image background;
+    private Image background;
     private GameLevel level;
 
     public GameView(GameLevel level, int width, int height) {
         super(level, width, height);
         this.level = level;
-        background = new ImageIcon("data/background/bg.png").getImage();
+        if (level instanceof Level1) {
+            removeAll();
+            background = new ImageIcon("data/background/bg.png").getImage();
+        } else if (level instanceof Level2){
+            removeAll();
+            background = new ImageIcon("data/background/bg1.png").getImage();
+        } else if (level instanceof Level3){
+            removeAll();
+            background = new ImageIcon("data/background/bg2.png").getImage();
+        }
     }
 
     @Override
@@ -30,13 +39,13 @@ public class GameView extends UserView {
         g.drawString("Coins: " + level.getPlayer().getCoins(), 100, 50);
 
 
-        if (Player.getLives() >= 3){
+        if (level.getPlayer().getLives() >= 3){
             g.drawImage(new ImageIcon("data/hearts/3 hearts.png").getImage(), 317, 0, 66, 22, this);
-        } else if (Player.getLives() == 2){
+        } else if (level.getPlayer().getLives() == 2){
             g.drawImage(new ImageIcon("data/hearts/2 hearts.png").getImage(), 317, 0,  66, 22,this);
-        } else if (Player.getLives() == 1){
+        } else if (level.getPlayer().getLives() == 1){
             g.drawImage(new ImageIcon("data/hearts/1 heart.png").getImage(), 317, 0, 66, 22, this);
-        } else if (Player.getLives() == 0){
+        } else if (level.getPlayer().getLives() == 0){
             g.drawImage(new ImageIcon("data/hearts/0 hearts.png").getImage(), 317, 0,  66, 22,this);
             g.drawImage(new ImageIcon("data/TheEnd.png").getImage(), 0, 0, 291, 79, this);
         }

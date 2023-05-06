@@ -6,6 +6,8 @@ import city.cs.engine.StaticBody;
 import org.jbox2d.common.Vec2;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Level1 extends GameLevel {
 
@@ -42,26 +44,18 @@ public class Level1 extends GameLevel {
         new Block(this, "grass").setPosition(new Vec2(15f, 0f));
 
         // Bomb
-        new Bomb(game, this, new Vec2(0, 0), 5000);
+//        new Bomb(game, this, new Vec2(0, 0), 5000);
 
 
         // Dirt blocks
         for (int i=-20; i<20; i++){
             new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
         }
-//        new Block(this, "dirt").setPosition(new Vec2(-15f, -15f));
-//        new Block(this, "dirt").setPosition(new Vec2(-10f, -15f));
-//        new Block(this, "dirt").setPosition(new Vec2(-5f, -15f));
-//        new Block(this, "dirt").setPosition(new Vec2(0f, -15f));
-//        new Block(this, "dirt").setPosition(new Vec2(5f, -15f));
-//        new Block(this, "dirt").setPosition(new Vec2(10f, -15f));
-//        new Block(this, "dirt").setPosition(new Vec2(15f, -15f));
-
     }
 
     @Override
     public boolean isComplete() {
-        if (getPlayer().getCoins() >= 1) {
+        if (getPlayer().getCoins() > 0) {
             System.out.println("Level 1 is complete!");
             return true;
         } else {
@@ -74,5 +68,6 @@ public class Level1 extends GameLevel {
     public String getLevelName() {
         return "Level1";
     }
+
 
 }

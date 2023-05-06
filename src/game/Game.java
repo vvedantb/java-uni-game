@@ -59,6 +59,11 @@ public class Game {
 
         level.start(); // start our game world simulation!
         view.requestFocus();
+
+        if (Player.getLives() < 1){
+            System.exit(0);
+        }
+
     }
 
     public void goToNextLevel() {
@@ -67,7 +72,6 @@ public class Game {
             level.stop();
             level = new Level2(this);
             view.setWorld(level);
-//            level.setPlayer(level.getPlayer());
             controller.updatePlayer(level.getPlayer());
             level.start();
         } else if (level instanceof Level2) {
@@ -88,11 +92,15 @@ public class Game {
         if (level instanceof Level1) {
             System.out.println("Starting Level 1!");
             view.setWorld(level);
-
             controller.updatePlayer(level.getPlayer());
             level.start ();
         } else if (level instanceof Level2) {
-            System.out.println("Starting Level s2!");
+            System.out.println("Starting Level 2!");
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level3) {
+            System.out.println("Starting Level 3!");
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
             level.start();

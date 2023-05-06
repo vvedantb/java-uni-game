@@ -24,8 +24,9 @@ public class GenericCollisionListener implements CollisionListener {
 //                "  rep. body:" + e.getReportingBody() + "\n" +
 //                "  oth. body:" + e.getOtherBody() + "\n");
 
-        if (e.getOtherBody() instanceof Apple && level.isComplete()){
+        if (e.getOtherBody() instanceof Coin && level.isComplete()){
             game.goToNextLevel();
+            e.getOtherBody().destroy();
         }
 
         if (e.getOtherBody() instanceof Apple){
@@ -48,16 +49,16 @@ public class GenericCollisionListener implements CollisionListener {
                 System.out.println("Game ends");
             }
         }
+//
+//        if (e.getOtherBody() instanceof Bomb){
+//            System.out.println("Bomb collision!");
+//            e.getOtherBody().destroy();
+//        }
 
-        if (e.getOtherBody() instanceof Bomb){
-            System.out.println("Bomb collision!");
-            e.getOtherBody().destroy();
-            if (e.getReportingBody() instanceof Player){
-                Player.setLives(Player.getLives()-1);
-                e.getReportingBody().destroy();
-            }
-        }
-
+//        if (e.getOtherBody() instanceof Slime){
+//            e.getOtherBody().destroy();
+//            Player.setCoins(Player.getCoins() + 10);
+//        }
 
 
     }

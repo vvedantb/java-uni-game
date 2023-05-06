@@ -21,7 +21,6 @@ public abstract class GameLevel extends World implements ActionListener {
         t = new Timer(20000, this);
         t.setInitialDelay(0);
         t.start();
-
         player.addCollisionListener(new GenericCollisionListener(this, game));
     }
 
@@ -32,8 +31,6 @@ public abstract class GameLevel extends World implements ActionListener {
     public Slime getSlime() {
         return slime;
     }
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         new Apple(this).setPosition(new Vec2(random.nextFloat() * 34 - 17, random.nextFloat() * 10));
