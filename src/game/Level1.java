@@ -1,5 +1,6 @@
 package game;
 
+import city.cs.engine.BodyImage;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.StaticBody;
@@ -11,11 +12,13 @@ import java.awt.event.ActionListener;
 
 public class Level1 extends GameLevel {
 
+
     private Slime slime;
     public Level1(Game game) {
         super(game);
         slime = new Slime(this); // Slime enemy
 
+        set_coin_threshold(0);
 
         // Ground border
         Shape horizontalBar = new BoxShape(30, 0.5f);
@@ -49,6 +52,7 @@ public class Level1 extends GameLevel {
         // Bomb
 //        new Bomb(game, this, new Vec2(0, 0), 5000);
 
+        door.setPosition(new Vec2(-15f, -10f));;
 
         // Dirt blocks
         for (int i=-20; i<20; i++){
@@ -62,8 +66,11 @@ public class Level1 extends GameLevel {
 
     @Override
     public boolean isComplete() {
-        if (getPlayer().getCoins() > 0) {
+        if (getPlayer().getCoins() > get_coin_threshold()) {
             System.out.println("Level 1 is complete!");
+            door.removeAllImages();
+            door.addImage(new BodyImage("data/door/open.png", 5f));
+//            door.changeBodyImage();
             return true;
         } else {
             return false;

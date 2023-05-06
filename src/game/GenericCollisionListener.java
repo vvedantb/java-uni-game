@@ -55,17 +55,12 @@ public class GenericCollisionListener implements CollisionListener {
 //                "  rep. body:" + e.getReportingBody() + "\n" +
 //                "  oth. body:" + e.getOtherBody() + "\n");
 
-        if (e.getOtherBody() instanceof Coin && level.isComplete()){
-            game.goToNextLevel();
-            e.getOtherBody().destroy();
-        }
-
         if (e.getOtherBody() instanceof Apple){
             Player.setLives(Player.getLives()+1);
             e.getOtherBody().destroy();
         }
 
-        if (e.getOtherBody() instanceof Coin){
+        if (e.getOtherBody() instanceof Coin && e.getReportingBody() instanceof Player){
             Player.setCoins(Player.getCoins()+1);
             e.getOtherBody().destroy();
         }
@@ -84,6 +79,11 @@ public class GenericCollisionListener implements CollisionListener {
             if (Player.getLives() == 1){
                 low_on_health_sound.play();
             }
+        }
+
+        if (e.getOtherBody() instanceof Door && e.getReportingBody() instanceof Player && level.isComplete()){
+            game.goToNextLevel();
+            e.getOtherBody().destroy();
         }
 //
 //        if (e.getOtherBody() instanceof Bomb){

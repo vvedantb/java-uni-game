@@ -45,6 +45,7 @@ public class GameView extends UserView {
             g.drawString("Lives: " + level.getPlayer().getLives(), 100, 100);
         }
 
+//        if (level.getPlayer().getCoins() > getLevel().coin_threshold)
         g.drawString("Coins: " + level.getPlayer().getCoins(), 100, 50);
 
 

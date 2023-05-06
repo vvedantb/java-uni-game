@@ -13,6 +13,8 @@ public class Level2 extends GameLevel {
     public Level2(Game game) {
         super(game);
 
+        set_coin_threshold(1);
+
         // Ground border
         Shape horizontalBar = new BoxShape(30, 0.5f);
         StaticBody ground = new StaticBody(this, horizontalBar);
@@ -44,23 +46,27 @@ public class Level2 extends GameLevel {
 
         // Bomb
 //        new Bomb(game, this, new Vec2(0, 0), 5000);
+//        new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
 
         // Dirt blocks
         for (int i=-20; i<20; i++){
-            new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
+            if (i%2 == 0){
+                new Block(this, "water1").setPosition(new Vec2(5f*i, -15f));
+            } else {
+                new Block(this, "water1").setPosition(new Vec2(5f*i, -15f));
+            }
         }
 
+        door.setPosition(new Vec2(-15f, -10f));;
+
         // Water blocks
-        new Block(this, "water1").setPosition(new Vec2(-15f, -10f));
-        new Block(this, "water1").setPosition(new Vec2(15f, -10f));
-
-
     }
 
     @Override
     public boolean isComplete() {
-        if (getPlayer().getCoins() > 1) {
+        if (getPlayer().getCoins() > get_coin_threshold()) {
             System.out.println("Level 2 is complete!");
+            door.changeBodyImage();
             return true;
         } else {
             return false;

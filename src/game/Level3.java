@@ -11,8 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Level3 extends GameLevel {
+
+    public int coin_threshold = 2;
     public Level3(Game game){
         super(game);
+
+        set_coin_threshold(2);
 
         System.out.println("This is level 3");
 
@@ -41,7 +45,7 @@ public class Level3 extends GameLevel {
 
     @Override
     public boolean isComplete() {
-        if (getPlayer().getCoins() > 2) {
+        if (getPlayer().getCoins() > coin_threshold) {
             System.out.println("Level 3 is complete!");
             return true;
         } else {
