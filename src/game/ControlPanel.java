@@ -53,9 +53,10 @@ public class ControlPanel {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    // mute sound
+                    Game.gameMusic.pause();
                 } else {
-                    // Unmute sound
+                    Game.gameMusic.resume();
+                    Game.gameMusic.loop();
                 }
             }
         });

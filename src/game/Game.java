@@ -19,6 +19,7 @@ public class Game implements ActionListener {
     private MouseHandler mouseHandler;
     private static SoundClip objective_complete_sound;
     private static SoundClip game_over_sound;
+    public static SoundClip gameMusic;
 
     //Initialise a new Game
     public Game() {
@@ -35,14 +36,8 @@ public class Game implements ActionListener {
         Tracker tracker = new Tracker(view, level.getPlayer());
 //        level.addStepListener(tracker); // Focus camera to center of the player
 
-//        try {
-//            SoundClip gameMusic = new SoundClip("data/music/gametheme2.wav");
-//            gameMusic.loop();
-//        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-//            //code in here will deal with any errors
-//            //that might occur while loading/playing sound
-//            System.out.println(e);
-//        }
+        gameMusic.loop();
+        gameMusic.setVolume(0.4);
 
         GiveFocus focus = new GiveFocus(view);
         view.addMouseListener(focus);
@@ -64,10 +59,20 @@ public class Game implements ActionListener {
         level.start(); // start our game world simulation!
         view.requestFocus();
 
-        if (Player.getLives() < 1){
+        if (Player.getLives() < 1) {
             System.exit(0);
         }
 
+    }
+
+    static {
+        try {
+            gameMusic = new SoundClip("data/music/gametheme2.wav");
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+//            //code in here will deal with any errors
+//            //that might occur while loading/playing sound
+            System.out.println(e);
+        }
     }
 
 
@@ -116,7 +121,7 @@ public class Game implements ActionListener {
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
             level.start();
-        } else if (level instanceof Level4){
+        } else if (level instanceof Level4) {
             System.out.println("Well done! Game complete.");
             game_over_sound.play();
             Timer timer = new Timer(3000, this);
@@ -126,12 +131,12 @@ public class Game implements ActionListener {
     }
 
 
-    public void setLevel(GameLevel level){
+    public void setLevel(GameLevel level) {
         if (level instanceof Level1) {
             System.out.println("Starting Level 1!");
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
-            level.start ();
+            level.start();
         } else if (level instanceof Level2) {
             System.out.println("Starting Level 2!");
             view.setWorld(level);
@@ -150,7 +155,7 @@ public class Game implements ActionListener {
         }
     }
 
-    public void quitGame(){
+    public void quitGame() {
         System.exit(0);
     }
 
