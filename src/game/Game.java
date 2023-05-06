@@ -137,6 +137,10 @@ public class Game implements ActionListener {
         }
     }
 
+    public void quitGame(){
+        System.exit(0);
+    }
+
 
     public static void main(String[] args) {
         new Game();
@@ -144,6 +148,6 @@ public class Game implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.exit(0);
+        quitGame();
     }
 }

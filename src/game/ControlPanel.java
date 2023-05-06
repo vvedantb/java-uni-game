@@ -26,7 +26,7 @@ public class ControlPanel {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                game.quitGame();
             }
         });
         saveGameButton.addActionListener(new ActionListener() {
