@@ -22,6 +22,18 @@ public class Block extends StaticBody {
             removeAllImages();
             image = new BodyImage("data/blocks/ground blocks/grass.png", 5f);
             addImage(image);
+        } else if (block.equals("water1")){
+            removeAllImages();
+            image = new BodyImage("data/blocks/water/1.png", 5f);
+            addImage(image);
+        } else if (block.equals("water2")){
+            removeAllImages();
+            image = new BodyImage("data/blocks/water/2.png", 5f);
+            addImage(image);
+        } else if (block.equals("water3")){
+            removeAllImages();
+            image = new BodyImage("data/blocks/water/3.png", 5f);
+            addImage(image);
         }
     }
 
