@@ -14,6 +14,7 @@ public class ControlPanel {
     private JButton saveGameButton;
     private JButton loadGameButton;
     private JCheckBox soundCheck;
+    private JButton restartGameButton;
 
     public ControlPanel(Game game, GameLevel level) {
         startButton.addActionListener(new ActionListener() {
@@ -56,6 +57,12 @@ public class ControlPanel {
                 } else {
                     // Unmute sound
                 }
+            }
+        });
+        restartGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Game();
             }
         });
     }
