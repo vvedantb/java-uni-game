@@ -13,6 +13,7 @@ public abstract class GameLevel extends World implements ActionListener {
     public Random random = new Random();
     public Timer t;
     public Door door;
+    private Slime slime;
 
     private int coin_threshold;
 
@@ -28,6 +29,8 @@ public abstract class GameLevel extends World implements ActionListener {
         player = new Player(this); // Player character
         player.addCollisionListener(new GenericCollisionListener(this, game));
 
+        slime = new Slime(this); // Slime enemy
+
         t = new Timer(20000, this);
         t.setInitialDelay(0);
         t.start();
@@ -35,6 +38,10 @@ public abstract class GameLevel extends World implements ActionListener {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Slime getSlime(){
+        return slime;
     }
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -56,10 +56,6 @@ public class Game implements ActionListener {
 
 //        JFrame debugView = new DebugViewer(world, 500, 500); //optional: uncomment this to make a debugging view
 
-        if (Player.getLives() < 1) {
-            System.exit(0);
-        }
-
         level.start(); // start our game world simulation!
         view.requestFocus();
     }
@@ -136,28 +132,40 @@ public class Game implements ActionListener {
     }
 
 
-    public void setLevel(GameLevel level) {
-        if (level instanceof Level1) {
-            System.out.println("Starting Level 1!");
+    public void setLevel(int lvl, int coins) {
+        if (lvl == 1){
+            System.out.println("Loading level 1...");
+            level = new Level1(this);
             view.setWorld(level);
-            controller.updatePlayer(level.getPlayer());
+            controller.updatePlayer(getLevel().getPlayer());
             level.start();
-        } else if (level instanceof Level2) {
-            System.out.println("Starting Level 2!");
-            view.setWorld(level);
-            controller.updatePlayer(level.getPlayer());
-            level.start();
-        } else if (level instanceof Level3) {
-            System.out.println("Starting Level 3!");
-            view.setWorld(level);
-            controller.updatePlayer(level.getPlayer());
-            level.start();
-        } else if (level instanceof Level4) {
-            System.out.println("Starting Level 4!");
-            view.setWorld(level);
-            controller.updatePlayer(level.getPlayer());
-            level.start();
+            level.getPlayer().setCoins(coins);
+            System.out.println(level.getPlayer().getCoins());
         }
+//        if (level instanceof Level1) {
+//            System.out.println("Starting Level 1!");
+//            level.stop();
+//            level = new Level1(this);
+//            Player.setCoins(coins);
+//            view.setWorld(level);
+//            controller.updatePlayer(level.getPlayer());
+//            level.start();
+//        } else if (level instanceof Level2) {
+//            System.out.println("Starting Level 2!");
+//            view.setWorld(level);
+//            controller.updatePlayer(level.getPlayer());
+//            level.start();
+//        } else if (level instanceof Level3) {
+//            System.out.println("Starting Level 3!");
+//            view.setWorld(level);
+//            controller.updatePlayer(level.getPlayer());
+//            level.start();
+//        } else if (level instanceof Level4) {
+//            System.out.println("Starting Level 4!");
+//            view.setWorld(level);
+//            controller.updatePlayer(level.getPlayer());
+//            level.start();
+//        }
     }
 
 
