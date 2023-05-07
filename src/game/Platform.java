@@ -5,7 +5,10 @@ import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.joints.PrismaticJointDef;
 
 /**
- * @author Vedant, Bhopatrao
+ * A platform in the game world that can be interacted with
+ * Platforms can be of different types, such as grass, grey, brown, or metal.
+ * Platforms are static bodies in the game
+ * @author Vedant Bhopatrao
  * @version 1.0
  * @since 2023
  */
@@ -19,6 +22,11 @@ public class Platform extends StaticBody {
 //    private final Vec2 startPosition;
 //    private boolean goingLeft;
 
+    /**
+     * Constructs a platform object with the specified type and adds it to the given game
+     * @param level the game level to which the object will be added
+     * @param type the type of platform to be created, which can be grass, grey, brown, or metal
+     */
     public Platform(GameLevel level, String type) {
         super(level, grassBlockShape);
         setPlatform(type);
@@ -31,6 +39,10 @@ public class Platform extends StaticBody {
 //        world.addStepListener(this);
     }
 
+    /**
+     * Sets the platform to the specified type, changing its image accordingly
+     * @param type the type of platform to be set, which can be grass, grey, brown, or metal
+     */
     public void setPlatform(String type) {
         BodyImage image;
         removeAllImages();

@@ -81,7 +81,7 @@ public class Slime extends Walker implements StepListener {
 
     /**
      * Changes the slime's image depending on the level and the direction it is facing
-     * @param type
+     * @param type slime image changed based on the type
      */
     public void setImage(String type) {
         if (level instanceof Level1) {

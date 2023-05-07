@@ -39,7 +39,7 @@ public class Block extends StaticBody {
             image = new BodyImage("data/blocks/ground blocks/dirt.png", 5f);
             addImage(image);
         } else if (block.equals("grass")){
-            image = new BodyImage("data/blocks/ground blocks/grass.png", 7f);
+            image = new BodyImage("data/blocks/ground blocks/grass.png", 5f);
             addImage(image);
         } else if (block.equals("water1")){
             image = new BodyImage("data/blocks/water/1.png", 5f);

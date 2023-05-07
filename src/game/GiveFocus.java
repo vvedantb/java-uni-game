@@ -4,7 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * @author Vedant, Bhopatrao
+ * Gives focus to the user playing
+ * @author Vedant Bhopatrao
  * @version 1.0
  * @since 2023
  */
