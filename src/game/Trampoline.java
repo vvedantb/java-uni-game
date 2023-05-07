@@ -1,0 +1,22 @@
+package game;
+
+import city.cs.engine.BodyImage;
+import city.cs.engine.Shape;
+import city.cs.engine.StaticBody;
+
+/**
+ * @author Vedant, Bhopatrao
+ * @version 1.0
+ * @since 2023
+ */
+public class Trampoline extends StaticBody {
+
+    private static final Shape jumperImage = null;
+    private static final BodyImage image = new BodyImage("data/", 2.0f);
+
+    public Trampoline(GameLevel level) {
+        super(level, jumperImage);
+        addImage(image);
+        this.setAlwaysOutline(true);
+    }
+}
