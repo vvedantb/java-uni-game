@@ -8,9 +8,11 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class GameView extends UserView {
+public class GameView extends UserView implements ActionListener {
 
     private Image background;
     private GameLevel level;
@@ -51,9 +53,7 @@ public class GameView extends UserView {
             g.drawString("Lives: " + level.getPlayer().getLives(), 100, 100);
         }
 
-        if (level.isRunning()){
-            g.drawString(game.getLevel().getLevelName(), 100, 150);
-        }
+        g.drawString(game.getLevel().getLevelName(), 100, 150);
 
         g.drawString("Coins: " + level.getPlayer().getCoins(), 100, 50);
 
@@ -67,6 +67,9 @@ public class GameView extends UserView {
         } else if (level.getPlayer().getLives() == 0) {
             g.drawImage(new ImageIcon("data/hearts/0 hearts.png").getImage(), 317, 0, 66, 22, this);
             g.drawImage(new ImageIcon("data/TheEnd.png").getImage(), 0, 0, 291, 79, this);
+            Timer timer = new Timer(3000, this);
+            timer.setRepeats(false);
+            timer.start();
         }
 
         if (level instanceof Level3) {
@@ -75,4 +78,9 @@ public class GameView extends UserView {
 
     }
 
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.exit(0);
+    }
 }
