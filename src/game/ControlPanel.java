@@ -7,15 +7,53 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 
+/**
+ * THe Control Panel class represents a panel containing control buttons and checkboxes for the game
+ * @author Vedant Bhopatrao
+ * @version 1.0
+ * @since 2023
+ */
 public class ControlPanel {
+    /**
+     * The main panel represents the main JPanel of the control panel
+     */
     public JPanel mainPanel;
+
+    /**
+     * Quit button used to exit the game
+     */
     private JButton quitButton;
+
+    /**
+     * Save button used to save current game state (i.e. current level and player coin count)
+     */
     private JButton saveGameButton;
+
+    /**
+     * Load button used to load a previously saved game state
+     */
     private JButton loadGameButton;
+
+    /**
+     * Sound check toggles game music on or off
+     */
     private JCheckBox soundCheck;
+
+    /**
+     * Restart game button is used to restart the game, back to level 1
+     */
     private JButton restartGameButton;
+
+    /**
+     * Mute sound fx button is used to mute all sound effects in the game
+     */
     private JCheckBox muteSoundFXCheckBox;
 
+    /**
+     * Creates a Control Panel object with the specified Game and GameLevel
+     * @param game The game object associated with the control panel
+     * @param level the GameLevel object associated with the control panel
+     */
     public ControlPanel(Game game, GameLevel level) {
 
         quitButton.addActionListener(new ActionListener() {

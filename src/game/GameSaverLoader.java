@@ -63,20 +63,34 @@ public class GameSaverLoader {
                 System.out.println(level_name + " , Coins: " + coins);
                 line = reader.readLine();
                 if (level_name == "Level 1"){
-                    game.getLevel().stop();
-                    game.setLevel(1, coins);
-//                    lvl.stop();
-//                    GameLevel level = new Level1(game);
+//                    game.getLevel().stop();
 //                    game.setLevel(1, coins);
-//
-//                    Player.setCoins(coins);
-//                    level.getPlayer().setCoins(coins);
-//                    return level;
+                    lvl.stop();
+                    GameLevel level = new Level1(game);
+//                    game.setLevel(1, coins);
+                    game.setLevel(level);
+                    Player.setCoins(coins);
+                    level.getPlayer().setCoins(coins);
+                    return level;
                 } else if (level_name == "Level 2") {
                     lvl.stop();
                     GameLevel level = new Level2(game);
-//                    game.setLevel(level);
+                    game.setLevel(level);
 
+                    Player.setCoins(coins);
+                    level.getPlayer().setCoins(coins);
+                    return level;
+                } else if (level_name == "Level 3") {
+                    lvl.stop();
+                    GameLevel level = new Level3(game);
+                    game.setLevel(level);
+                    Player.setCoins(coins);
+                    level.getPlayer().setCoins(coins);
+                    return level;
+                } else if (level_name == "Level 4") {
+                    lvl.stop();
+                    GameLevel level = new Level4(game);
+                    game.setLevel(level);
                     Player.setCoins(coins);
                     level.getPlayer().setCoins(coins);
                     return level;

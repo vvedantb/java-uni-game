@@ -68,7 +68,7 @@ public abstract class GameLevel extends World implements ActionListener {
 
         slime = new Slime(this); // Slime enemy
 
-        t = new Timer(20000, this);
+        t = new Timer(5000, this);
         t.setInitialDelay(0);
         t.start();
     }

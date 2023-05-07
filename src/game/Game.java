@@ -12,7 +12,10 @@ import java.io.IOException;
 
 //Your main game entry point
 /**
- * @author Vedant, Bhopatrao
+ * The game class is the main entry point of the game
+ * It initialises the world, creates the game view, and the player controller
+ * It also handles sound effects and transitions between levels
+ * @author Vedant Bhopatrao
  * @version 1.0
  * @since 2023
  */
@@ -25,7 +28,9 @@ public class Game implements ActionListener {
     public static SoundClip game_over_sound;
     public static SoundClip gameMusic;
 
-    //Initialise a new Game
+    /**
+     * Initialises a new game instance
+     */
     public Game() {
 
         view = new GameView(this, level, 700, 700); //3. make a view to look into the game world
@@ -74,6 +79,10 @@ public class Game implements ActionListener {
         }
     }
 
+    /**
+     * Gets the current game level
+     * @return the current game level
+     */
     public GameLevel getLevel() {
         return level;
     }
@@ -98,6 +107,9 @@ public class Game implements ActionListener {
         }
     }
 
+    /**
+     * Transitions to the next level. Stops old level and creates the new level for the player to enter
+     */
     public void goToNextLevel() {
         if (level instanceof Level1) {
             System.out.println("Well done! Level 1 complete!");
@@ -135,48 +147,58 @@ public class Game implements ActionListener {
         }
     }
 
-
-    public void setLevel(int lvl, int coins) {
-        if (lvl == 1){
-            System.out.println("Loading level 1...");
+    /**
+     * Sets the game level and the players coins to the specified values
+     * @param level level to set the gamelevel on
+     */
+    public void setLevel(GameLevel level) {
+//        int lvl, int coins
+//        if (lvl == 1){
+//            System.out.println("Loading level 1...");
+//            level = new Level1(this);
+//            view.setWorld(level);
+//            controller.updatePlayer(getLevel().getPlayer());
+//            level.start();
+//            level.getPlayer().setCoins(coins);
+//            System.out.println(level.getPlayer().getCoins());
+//        }
+        if (level instanceof Level1) {
+            System.out.println("Starting Level 1!");
+            level.stop();
             level = new Level1(this);
             view.setWorld(level);
-            controller.updatePlayer(getLevel().getPlayer());
+            controller.updatePlayer(level.getPlayer());
             level.start();
-            level.getPlayer().setCoins(coins);
-            System.out.println(level.getPlayer().getCoins());
+        } else if (level instanceof Level2) {
+            System.out.println("Starting Level 2!");
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level3) {
+            System.out.println("Starting Level 3!");
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
+        } else if (level instanceof Level4) {
+            System.out.println("Starting Level 4!");
+            view.setWorld(level);
+            controller.updatePlayer(level.getPlayer());
+            level.start();
         }
-//        if (level instanceof Level1) {
-//            System.out.println("Starting Level 1!");
-//            level.stop();
-//            level = new Level1(this);
-//            Player.setCoins(coins);
-//            view.setWorld(level);
-//            controller.updatePlayer(level.getPlayer());
-//            level.start();
-//        } else if (level instanceof Level2) {
-//            System.out.println("Starting Level 2!");
-//            view.setWorld(level);
-//            controller.updatePlayer(level.getPlayer());
-//            level.start();
-//        } else if (level instanceof Level3) {
-//            System.out.println("Starting Level 3!");
-//            view.setWorld(level);
-//            controller.updatePlayer(level.getPlayer());
-//            level.start();
-//        } else if (level instanceof Level4) {
-//            System.out.println("Starting Level 4!");
-//            view.setWorld(level);
-//            controller.updatePlayer(level.getPlayer());
-//            level.start();
-//        }
     }
 
-
+    /**
+     * Runs a game instance
+     * @param args
+     */
     public static void main(String[] args) {
         new Game();
     }
 
+    /**
+     * Quits the game after reaching the final level
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         System.exit(0);

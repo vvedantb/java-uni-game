@@ -12,7 +12,13 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 /**
- * @author Vedant, Bhopatrao
+ * This class represents the third level of the game
+ * <p>
+ * This level contains platforms, blocks, a lift, a tree, a door, and borders around the screen
+ * THe objective of the player is to collect a certain number of coins to open the door and complete this level.
+ * This class extends the GameLevel class and implements the necessary methods to define the level
+ * </p>
+ * @author Vedant Bhopatrao
  * @version 1.0
  * @since 2023
  */
@@ -20,6 +26,10 @@ public class Level3 extends GameLevel {
 
     private Door door;
 
+    /**
+     * Constructs a new instance of the Level3 class
+     * @param game the game in which the level is being played
+     */
     public Level3(Game game) {
         super(game);
 
@@ -59,6 +69,15 @@ public class Level3 extends GameLevel {
         door.setPosition(new Vec2(-15f, -10f));
     }
 
+    /**
+     * Checks if the level is complete
+     * <p>
+     *     This method is overriden from the GameLevel class.
+     *     The level is complete if the player has collected a certain number of coins.
+     *     If the level is complete, the door is set to open.
+     * </p>
+     * @return True if level is complete, false if not.
+     */
     @Override
     public boolean isComplete() {
         if (getPlayer().getCoins() > get_coin_threshold()) {
