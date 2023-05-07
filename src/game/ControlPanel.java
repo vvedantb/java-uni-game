@@ -44,7 +44,7 @@ public class ControlPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    GameSaverLoader.load("src/game_data.txt", game);
+                    GameSaverLoader.load(game.getLevel(), "src/game_data.txt", game);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

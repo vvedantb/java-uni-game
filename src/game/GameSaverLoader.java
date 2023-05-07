@@ -8,13 +8,15 @@ import java.util.Arrays;
 
 public class GameSaverLoader {
 
+    private GameLevel level;
+
     public static void save(GameLevel level, String file_name) throws IOException {
         boolean append = false;
         FileWriter writer = null;
         try {
             writer = new FileWriter(file_name, append);
             writer.write(level.getLevelName() + "," + level.getPlayer().getCoins() + "\n");
-            System.out.println(level.getLevelName() + "," + level.getPlayer().getCoins());
+            System.out.println(level.getLevelName() + " ," + level.getPlayer().getCoins());
             System.out.println("Game data saved!");
         } finally {
             if (writer != null) {
@@ -24,7 +26,7 @@ public class GameSaverLoader {
 
     }
 
-    public static GameLevel load(String file_name, Game game) throws IOException {
+    public static GameLevel load(GameLevel lvl, String file_name, Game game) throws IOException {
 
         FileReader fr = null;
         BufferedReader reader = null;
@@ -38,24 +40,28 @@ public class GameSaverLoader {
                 // file is assumed to contain one name, score pair per line
                 String[] tokens = line.split(",");
                 System.out.println(Arrays.toString(tokens));
-                String level = tokens[0];
+                String level_name = tokens[0];
                 int coins = Integer.parseInt(tokens[1]);
-                System.out.println("Level: " + level + ", Coins: " + coins);
+                System.out.println(level_name + " , Coins: " + coins);
                 line = reader.readLine();
-                if (level == "Level1"){
-                    Level1 level1 = new Level1(game);
-                    game.setLevel(level1);
+                if (level_name == "Level 1"){
+                    game.getLevel().stop();
+                    game.setLevel(1, coins);
+//                    lvl.stop();
+//                    GameLevel level = new Level1(game);
+//                    game.setLevel(1, coins);
+//
+//                    Player.setCoins(coins);
+//                    level.getPlayer().setCoins(coins);
+//                    return level;
+                } else if (level_name == "Level 2") {
+                    lvl.stop();
+                    GameLevel level = new Level2(game);
+//                    game.setLevel(level);
 
                     Player.setCoins(coins);
-                    level1.getPlayer().setCoins(coins);
-                    return level1;
-                } else if (level == "Level2") {
-                    Level2 level2 = new Level2(game);
-                    game.setLevel(level2);
-
-                    Player.setCoins(coins);
-                    level2.getPlayer().setCoins(coins);
-                    return level2;
+                    level.getPlayer().setCoins(coins);
+                    return level;
                 }
             }
             System.out.println("...done reading");
@@ -70,9 +76,5 @@ public class GameSaverLoader {
         }
 
         return null;
-
-
-
     }
-
 }
