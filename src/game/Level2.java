@@ -6,14 +6,19 @@ import city.cs.engine.StaticBody;
 import org.jbox2d.common.Vec2;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Level2 extends GameLevel {
+
+    private Door door;
+
     public Level2(Game game) {
         super(game);
 
-        set_coin_threshold(1);
+        door = new Door(game, this);
+
+        Random rand = new Random();
+        set_coin_threshold(rand.nextInt(4) + 4);
 
         // Ground border
         Shape horizontalBar = new BoxShape(30, 0.5f);
@@ -49,15 +54,15 @@ public class Level2 extends GameLevel {
 //        new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
 
         // Dirt blocks
-        for (int i=-20; i<20; i++){
-            if (i%2 == 0){
-                new Block(this, "water1").setPosition(new Vec2(5f*i, -15f));
+        for (int i = -20; i < 20; i++) {
+            if (i % 2 == 0) {
+                new Block(this, "water1").setPosition(new Vec2(5f * i, -15f));
             } else {
-                new Block(this, "water1").setPosition(new Vec2(5f*i, -15f));
+                new Block(this, "water1").setPosition(new Vec2(5f * i, -15f));
             }
         }
 
-        door.setPosition(new Vec2(-15f, -10f));;
+        door.setPosition(new Vec2(15f, -10f));
 
         // Water blocks
     }
@@ -66,17 +71,23 @@ public class Level2 extends GameLevel {
     public boolean isComplete() {
         if (getPlayer().getCoins() > get_coin_threshold()) {
             System.out.println("Level 2 is complete!");
-            door.changeBodyImage();
+            door.setBodyImage("open");
             return true;
         } else {
             return false;
         }
+    }
 
+    @Override
+    public void changeDoor() {
+        if (getPlayer().getCoins() > get_coin_threshold()) {
+            door.setBodyImage("open");
+        }
     }
 
     @Override
     public String getLevelName() {
-        return "Level2";
+        return "Level 2";
     }
 
 }

@@ -9,10 +9,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Level4 extends GameLevel {
+
+    private Door door;
+
     public Level4(Game game){
         super(game);
+
+        door = new Door(game, this);
+
+        Random rand = new Random();
+        set_coin_threshold(rand.nextInt(5) + 11);
 
         System.out.println("This is level 3");
 
@@ -37,11 +46,13 @@ public class Level4 extends GameLevel {
         for (int i=-20; i<20; i++){
             new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
         }
+
+        door.setPosition(new Vec2(15f, -10f));
     }
 
     @Override
     public boolean isComplete() {
-        if (getPlayer().getCoins() > 4) {
+        if (getPlayer().getCoins() > get_coin_threshold()) {
             System.out.println("Level 4 is complete!");
             return true;
         } else {
@@ -50,8 +61,15 @@ public class Level4 extends GameLevel {
     }
 
     @Override
+    public void changeDoor() {
+        if (getPlayer().getCoins() > get_coin_threshold()) {
+            door.setBodyImage("open");
+        }
+    }
+
+    @Override
     public String getLevelName() {
-        return "Level4";
+        return "Level 4";
     }
 
 

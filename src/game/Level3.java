@@ -9,14 +9,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Level3 extends GameLevel {
 
-    public int coin_threshold = 2;
-    public Level3(Game game){
+    private Door door;
+
+    public Level3(Game game) {
         super(game);
 
-        set_coin_threshold(2);
+        door = new Door(game, this);
+
+        Random rand = new Random();
+        set_coin_threshold(rand.nextInt(3) + 8);
 
         System.out.println("This is level 3");
 
@@ -38,15 +43,18 @@ public class Level3 extends GameLevel {
 
 
         // Dirt blocks
-        for (int i=-20; i<20; i++){
-            new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
+        for (int i = -20; i < 20; i++) {
+            new Block(this, "dirt").setPosition(new Vec2(5f * i, -15f));
         }
+
+        door.setPosition(new Vec2(-15f, -10f));
     }
 
     @Override
     public boolean isComplete() {
-        if (getPlayer().getCoins() > coin_threshold) {
+        if (getPlayer().getCoins() > get_coin_threshold()) {
             System.out.println("Level 3 is complete!");
+            door.setBodyImage("open");
             return true;
         } else {
             return false;
@@ -54,8 +62,15 @@ public class Level3 extends GameLevel {
     }
 
     @Override
+    public void changeDoor() {
+        if (getPlayer().getCoins() > get_coin_threshold()) {
+            door.setBodyImage("open");
+        }
+    }
+
+    @Override
     public String getLevelName() {
-        return "Level3";
+        return "Level 3";
     }
 
 
