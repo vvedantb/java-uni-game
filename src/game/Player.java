@@ -8,7 +8,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 /**
- * @author Vedant, Bhopatrao
+ * The PLayer class extends the Walker class and represents the main character of the game
+ * It initialises the Player object with an image, a sound effect, number of lives, and number of coins
+ * The class also allows the Player to set their image to different types of images depending on the level
+ * @author Vedant Bhopatrao
  * @version 1.0
  * @since 2023
  */
@@ -19,9 +22,6 @@ public class Player extends Walker {
     private static SoundClip low_on_health_sound;
     private static int lives = 3;
     private static int coins = 0;
-    private GameLevel level;
-    private BodyImage image;
-    //    private BodyImage image = new BodyImage("data/maskdude.gif", 4f);
 
     static {
         try {
@@ -39,10 +39,17 @@ public class Player extends Walker {
             System.out.println(e);
         }
     }
+    //    private BodyImage image = new BodyImage("data/maskdude.gif", 4f);
+    private final GameLevel level;
+    private BodyImage image;
 
-
-
+    /**
+     * The player constructor creates a new Player object for a GameLevel
+     * It sets the PLayer object's image to the default left image and initialises its position
+     * @param level the GameLevel that the PLayer object belongs to
+     */
     public Player(GameLevel level) {
+        // Initialises the player as a walker object and adds it to GameLevel
         super(level, studentShape);
         this.level = level;
         setImage("default left");
@@ -51,31 +58,52 @@ public class Player extends Walker {
         this.setPosition(new Vec2(0, 10));
     }
 
+    /**
+     * Returns the number of coins the player has
+     * @return player coin count
+     */
     public static int getCoins() {
         return coins;
     }
 
+    /**
+     * Sets the number of coins the player has to a specified value
+     * @param coins the new number of coins the player has
+     */
     public static void setCoins(int coins) {
         Player.coins = coins;
         System.out.println("Coins: " + coins);
     }
 
+    /**
+     * Returns the number of lives the player has
+     * @return player lives count
+     */
     public static int getLives() {
         return lives;
     }
 
+    /**
+     * Sets the number of lives the player has
+     * @param lives new number of player lives count
+     */
     public static void setLives(int lives) {
         Player.lives = lives;
     }
 
-
+    /**
+     * Overrides the destroy() method of the superclass, and plays the sound of the player getting damaged
+     */
     @Override
     public void destroy() {
         damagedSound.play();
         super.destroy();
     }
 
-
+    /**
+     * Sets the image of the player according to the specific type based on the key stroke pressed by the user
+     * @param type A string that represents the type of image to set on the Player character
+     */
     public void setImage(String type) {
         removeAllImages();
         if (level instanceof Level1) {
@@ -171,9 +199,5 @@ public class Player extends Walker {
                 }
             }
         }
-    }
-
-    public void shoot() {
-
     }
 }

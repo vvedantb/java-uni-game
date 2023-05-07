@@ -4,7 +4,9 @@ import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
 /**
- * @author Vedant, Bhopatrao
+ * Lift class represents a static body that moves up and down in a GameLevel
+ * It implements the StepListener interface to update its position in the simulation
+ * @author Vedant Bhopatrao
  * @version 1.0
  * @since 2023
  */
@@ -16,6 +18,11 @@ public class Lift extends StaticBody implements StepListener {
     private final float top, bottom;
     private float delta;
 
+    /**
+     * Creates a new Lift object with the given GameLevel as its parent
+     * It also adds the object as a  step listener to the GameLevel so that its position can be updated in each simulation step
+     * @param level The GameLevel object to which the Lift object belongs
+     */
     public Lift(GameLevel level) {
         super(level, liftShape);
         addImage(image);
@@ -26,6 +33,11 @@ public class Lift extends StaticBody implements StepListener {
         level.addStepListener(this);
     }
 
+    /**
+     * This method is called before each simulation step
+     * It updates the position of the Lift object
+     * @param stepEvent The StepEvent object representing the current simulation step
+     */
     @Override
     public void preStep(StepEvent stepEvent) {
         if (getPosition().y < bottom){
@@ -38,6 +50,10 @@ public class Lift extends StaticBody implements StepListener {
         this.setPosition(new Vec2(this.getPosition().x, this.getPosition().y+delta));
     }
 
+    /**
+     * This method is called after each simulation step, it is not used in the class
+     * @param stepEvent the StepEvent object representing the current simulation step
+     */
     @Override
     public void postStep(StepEvent stepEvent) {
 

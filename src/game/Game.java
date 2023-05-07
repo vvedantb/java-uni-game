@@ -21,7 +21,6 @@ public class Game implements ActionListener {
     private GameLevel level = new Level1(this);
     private GameView view;
     private PlayerController controller;
-    private MouseHandler mouseHandler;
     public static SoundClip objective_complete_sound;
     public static SoundClip game_over_sound;
     public static SoundClip gameMusic;
