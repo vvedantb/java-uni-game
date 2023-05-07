@@ -26,12 +26,11 @@ public abstract class GameLevel extends World implements ActionListener {
 
     public GameLevel(Game game) {
         player = new Player(this); // Player character
+        player.addCollisionListener(new GenericCollisionListener(this, game));
+
         t = new Timer(20000, this);
         t.setInitialDelay(0);
         t.start();
-        player.addCollisionListener(new GenericCollisionListener(this, game));
-
-        door = new Door(game, this);
     }
 
     public Player getPlayer() {
@@ -45,6 +44,7 @@ public abstract class GameLevel extends World implements ActionListener {
 
     public abstract boolean isComplete();
 
+    public abstract void changeDoor();
 
     public abstract String getLevelName();
 

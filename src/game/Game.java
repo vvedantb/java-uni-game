@@ -13,7 +13,7 @@ import java.io.IOException;
 //Your main game entry point
 public class Game implements ActionListener {
 
-    private GameLevel level;
+    private GameLevel level = new Level1(this);
     private GameView view;
     private PlayerController controller;
     private MouseHandler mouseHandler;
@@ -23,15 +23,15 @@ public class Game implements ActionListener {
 
     //Initialise a new Game
     public Game() {
-        level = new Level1(this);
-        view = new GameView(level, 700, 700); //3. make a view to look into the game world
+
+        view = new GameView(this, level, 700, 700); //3. make a view to look into the game world
 //        view.setGridResolution(1); //optional: draw a 1-metre grid over the view
 
         controller = new PlayerController(level.getPlayer());
         view.addKeyListener(controller);
 
-        mouseHandler = new MouseHandler(level, view);
-        view.addMouseListener(mouseHandler);
+//        mouseHandler = new MouseHandler(level, view);
+//        view.addMouseListener(mouseHandler);
 
         Tracker tracker = new Tracker(view, level.getPlayer());
 //        level.addStepListener(tracker); // Focus camera to center of the player
@@ -56,13 +56,12 @@ public class Game implements ActionListener {
 
 //        JFrame debugView = new DebugViewer(world, 500, 500); //optional: uncomment this to make a debugging view
 
-        level.start(); // start our game world simulation!
-        view.requestFocus();
-
         if (Player.getLives() < 1) {
             System.exit(0);
         }
 
+        level.start(); // start our game world simulation!
+        view.requestFocus();
     }
 
     static {
@@ -75,6 +74,9 @@ public class Game implements ActionListener {
         }
     }
 
+    public GameLevel getLevel() {
+        return level;
+    }
 
     static {
         try {
@@ -102,6 +104,7 @@ public class Game implements ActionListener {
             objective_complete_sound.play();
             level.stop();
             level = new Level2(this);
+            System.out.println(level.getLevelName());
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
             level.start();
@@ -110,6 +113,7 @@ public class Game implements ActionListener {
             objective_complete_sound.play();
             level.stop();
             level = new Level3(this);
+            System.out.println(level.getLevelName());
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
             level.start();
@@ -118,6 +122,7 @@ public class Game implements ActionListener {
             objective_complete_sound.play();
             level.stop();
             level = new Level4(this);
+            System.out.println(level.getLevelName());
             view.setWorld(level);
             controller.updatePlayer(level.getPlayer());
             level.start();
@@ -155,10 +160,6 @@ public class Game implements ActionListener {
         }
     }
 
-    public void quitGame() {
-        System.exit(0);
-    }
-
 
     public static void main(String[] args) {
         new Game();
@@ -166,6 +167,6 @@ public class Game implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        quitGame();
+        System.exit(0);
     }
 }

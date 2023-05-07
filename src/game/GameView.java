@@ -14,23 +14,28 @@ public class GameView extends UserView {
 
     private Image background;
     private GameLevel level;
+    private Game game;
 
-    public GameView(GameLevel level, int width, int height) {
+    public GameView(Game game, GameLevel level, int width, int height) {
         super(level, width, height);
         this.level = level;
+        this.game = game;
     }
 
     @Override
     protected void paintBackground(Graphics2D g) {
-        if (level instanceof Level1) {
+        if (game.getLevel() instanceof Level1) {
             removeAll();
             background = new ImageIcon("data/background/bg.png").getImage();
-        } else if (level instanceof Level2) {
+        } else if (game.getLevel() instanceof Level2) {
             removeAll();
             background = new ImageIcon("data/background/bg1.png").getImage();
-        } else if (level instanceof Level3) {
+        } else if (game.getLevel() instanceof Level3) {
             removeAll();
             background = new ImageIcon("data/background/bg2.png").getImage();
+        } else if (game.getLevel() instanceof Level4){
+            removeAll();
+            background = new ImageIcon("data/background/bg3.png").getImage();
         }
         g.drawImage(background, 0, 0, 700, 700, this);
     }
@@ -39,13 +44,17 @@ public class GameView extends UserView {
     protected void paintForeground(Graphics2D g) {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.PLAIN, 16));
+
         if (level.getPlayer().getLives() > 3){
             g.drawString("Lives: 3", 100, 100);
         } else {
             g.drawString("Lives: " + level.getPlayer().getLives(), 100, 100);
         }
 
-//        if (level.getPlayer().getCoins() > getLevel().coin_threshold)
+        if (level.isRunning()){
+            g.drawString(game.getLevel().getLevelName(), 100, 150);
+        }
+
         g.drawString("Coins: " + level.getPlayer().getCoins(), 100, 50);
 
 
