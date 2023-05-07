@@ -46,10 +46,14 @@ public class Level3 extends GameLevel {
         StaticBody rightBar = new StaticBody(this, verticalBar);
         rightBar.setPosition(new Vec2(18f, Window.HEIGHT));
 
+        // Platforms
+        new Platform(this, "grey").setPosition(new Vec2(-8, 0));
+        new Lift(this, "grey").setPosition(new Vec2(0, -2));
+        new Platform(this, "grey").setPosition(new Vec2(6, 0));
 
         // Dirt blocks
         for (int i = -20; i < 20; i++) {
-            new Block(this, "dirt").setPosition(new Vec2(5f * i, -15f));
+            new Block(this, "cave").setPosition(new Vec2(5f * i, -15f));
         }
 
         door.setPosition(new Vec2(-15f, -10f));

@@ -13,7 +13,7 @@ import org.jbox2d.common.Vec2;
 public class Lift extends StaticBody implements StepListener {
 
     private static final Shape liftShape = new BoxShape(2, 0.5f);
-    private static final BodyImage image = new BodyImage("data/objects/platform.gif", 1f);
+    private static BodyImage image;
     private final Vec2 startPosition;
     private final float top, bottom;
     private float delta;
@@ -23,14 +23,32 @@ public class Lift extends StaticBody implements StepListener {
      * It also adds the object as a  step listener to the GameLevel so that its position can be updated in each simulation step
      * @param level The GameLevel object to which the Lift object belongs
      */
-    public Lift(GameLevel level) {
+    public Lift(GameLevel level, String type) {
         super(level, liftShape);
-        addImage(image);
+        setLiftImage(type);
         startPosition = this.getPosition();
         bottom = startPosition.y;
         top = startPosition.y+5;
         delta = 0.04f;
         level.addStepListener(this);
+    }
+
+    private void setLiftImage(String type) {
+        BodyImage image;
+        removeAllImages();
+        if (type.equals("grass")){
+            image = new BodyImage("data/objects/platform.gif", 1f);
+            addImage(image);
+        } else if (type.equals("grey")) {
+            image = new BodyImage("data/platforms/grey.png", 1f);
+            addImage(image);
+        } else if (type.equals("brown")){
+            image = new BodyImage("data/platforms/brown.png", 1f);
+            addImage(image);
+        } else if (type.equals("metal")){
+            image = new BodyImage("data/platforms/metal.png", 1f);
+            addImage(image);
+        }
     }
 
     /**

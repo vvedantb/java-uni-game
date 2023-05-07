@@ -49,8 +49,14 @@ public class Level4 extends GameLevel {
 
         // Dirt blocks
         for (int i=-20; i<20; i++){
-            new Block(this, "dirt").setPosition(new Vec2(5f*i, -15f));
+            new Block(this, "block").setPosition(new Vec2(5f*i, -15f));
         }
+
+        // Platforms
+        new Platform(this, "metal").setPosition(new Vec2(-8, 0));
+        new Lift(this, "metal").setPosition(new Vec2(0, -2));
+        new Platform(this, "metal").setPosition(new Vec2(6, 0));
+
 
         door.setPosition(new Vec2(15f, -10f));
     }

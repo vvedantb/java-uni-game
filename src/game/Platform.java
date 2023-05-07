@@ -12,16 +12,16 @@ import org.jbox2d.dynamics.joints.PrismaticJointDef;
 public class Platform extends StaticBody {
 
     private static final Shape grassBlockShape = new BoxShape(2, 0.5f);
-    private static final BodyImage image = new BodyImage("data/objects/platform.gif", 1f);
+    private static BodyImage image;
 //    private final float left, right;
 //    private final int SPEED = 2;
 //    private final int RANGE = 1;
 //    private final Vec2 startPosition;
 //    private boolean goingLeft;
 
-    public Platform(GameLevel level) {
+    public Platform(GameLevel level, String type) {
         super(level, grassBlockShape);
-        addImage(image);
+        setPlatform(type);
         this.setAlwaysOutline(true);
 //
 //        startPosition = this.getPosition();
@@ -29,6 +29,24 @@ public class Platform extends StaticBody {
 //        right = startPosition.x + RANGE;
 
 //        world.addStepListener(this);
+    }
+
+    public void setPlatform(String type) {
+        BodyImage image;
+        removeAllImages();
+        if (type.equals("grass")){
+            image = new BodyImage("data/objects/platform.gif", 1f);
+            addImage(image);
+        } else if (type.equals("grey")) {
+            image = new BodyImage("data/platforms/grey.png", 1f);
+            addImage(image);
+        } else if (type.equals("brown")){
+            image = new BodyImage("data/platforms/brown.png", 1f);
+            addImage(image);
+        } else if (type.equals("metal")){
+            image = new BodyImage("data/platforms/metal.png", 1f);
+            addImage(image);
+        }
     }
 
 //

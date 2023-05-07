@@ -46,9 +46,9 @@ public class Level2 extends GameLevel {
         new Tree(this).setPosition(new Vec2(-15f, 6f));
 
         // Platforms
-        new Platform(this).setPosition(new Vec2(-8, 0));
-        new Lift(this).setPosition(new Vec2(0, -2));
-        new Platform(this).setPosition(new Vec2(6, 0));
+        new Platform(this, "brown").setPosition(new Vec2(-8, 0));
+        new Lift(this, "brown").setPosition(new Vec2(0, -2));
+        new Platform(this, "brown").setPosition(new Vec2(6, 0));
 
         // Grass blocks
         new Block(this, "grass").setPosition(new Vec2(-15f, 0f));

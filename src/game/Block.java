@@ -34,25 +34,27 @@ public class Block extends StaticBody {
      */
     public void setBlock(String block) {
         BodyImage image;
+        removeAllImages();
         if (block.equals("dirt")) {
-            removeAllImages();
             image = new BodyImage("data/blocks/ground blocks/dirt.png", 5f);
             addImage(image);
         } else if (block.equals("grass")){
-            removeAllImages();
-            image = new BodyImage("data/blocks/ground blocks/grass.png", 5f);
+            image = new BodyImage("data/blocks/ground blocks/grass.png", 7f);
             addImage(image);
         } else if (block.equals("water1")){
-            removeAllImages();
             image = new BodyImage("data/blocks/water/1.png", 5f);
             addImage(image);
         } else if (block.equals("water2")){
-            removeAllImages();
             image = new BodyImage("data/blocks/water/2.png", 5f);
             addImage(image);
         } else if (block.equals("water3")){
-            removeAllImages();
             image = new BodyImage("data/blocks/water/3.png", 5f);
+            addImage(image);
+        } else if (block.equals("cave")) {
+            image = new BodyImage("data/blocks/cave/block.png", 5f);
+            addImage(image);
+        } else if (block.equals("block")){
+            image = new BodyImage("data/blocks/block.png", 7f);
             addImage(image);
         }
     }
